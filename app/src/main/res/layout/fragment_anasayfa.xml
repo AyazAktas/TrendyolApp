@@ -1,0 +1,56 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#FFFFFF"
+    tools:context="com.example.trendyolapp.ui.fragment.AnasayfaFragment">
+
+    <SearchView
+        android:id="@+id/searchViewAnasayfa"
+        android:layout_width="313dp"
+        android:layout_height="45dp"
+        android:background="@drawable/rounded_searchview_background"
+        android:backgroundTint="#EDEAEA"
+        android:queryHint="Aradığınız ürün, kategori veya markayı yazınız"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewMesajlar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.001"
+        app:searchIcon="@drawable/baseline_search_24" />
+
+    <ImageView
+        android:id="@+id/imageViewMesajlar"
+        android:layout_width="33dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="2dp"
+        android:src="@drawable/baseline_mail_outline_24"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewBildirimler"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/searchViewAnasayfa"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewBildirimler"
+        android:layout_width="41dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="2dp"
+        android:src="@drawable/ic_launcher"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageViewMesajlar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/butonkategorirv"
+        android:layout_width="317dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewMesajlar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

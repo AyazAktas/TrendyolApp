@@ -9,5 +9,14 @@
         android:id="@+id/anasayfaFragment"
         android:name="com.example.trendyolapp.ui.fragment.AnasayfaFragment"
         android:label="fragment_anasayfa"
-        tools:layout="@layout/fragment_anasayfa" />
+        tools:layout="@layout/fragment_anasayfa" >
+        <action
+            android:id="@+id/action_anasayfaFragment_to_hesabimFragment"
+            app:destination="@id/hesabimFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hesabimFragment"
+        android:name="com.example.trendyolapp.ui.fragment.HesabimFragment"
+        android:label="fragment_hesabim"
+        tools:layout="@layout/fragment_hesabim" />
 </navigation>

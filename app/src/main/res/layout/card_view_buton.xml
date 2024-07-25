@@ -21,7 +21,7 @@
                 android:id="@+id/buttonKategori"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#EDEAEA"
+                android:backgroundTint="#f4f3f3"
                 android:text="Button"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"

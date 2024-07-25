@@ -46,11 +46,26 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/butonkategorirv"
-        android:layout_width="317dp"
+        android:layout_width="250dp"
         android:layout_height="42dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewMesajlar" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="9dp"
+        android:backgroundTint="#F4F3F3"
+        android:drawableLeft="@drawable/searchkategori"
+        android:drawablePadding="0dp"
+        android:text="Kategoriler"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchViewAnasayfa" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

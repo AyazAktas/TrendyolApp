@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.trendyolapp.R
 import com.example.trendyolapp.databinding.FragmentAnasayfaBinding
 import com.example.trendyolapp.data.entity.Butonlar
+import com.example.trendyolapp.data.entity.Reklam
 import com.example.trendyolapp.ui.adapter.ButtonAdapter
+import com.example.trendyolapp.ui.adapter.ReklamAdapter
 
 class AnasayfaFragment : Fragment() {
     private lateinit var binding: FragmentAnasayfaBinding
@@ -61,6 +63,24 @@ class AnasayfaFragment : Fragment() {
         val butonAdapter=ButtonAdapter(requireContext(),butonlarListesi)
         binding.butonkategorirv.adapter=butonAdapter
 
+
+
+        binding.reklamlarrv.layoutManager=LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        val reklamlarListesi=ArrayList<Reklam>()
+        val r1=Reklam(1,"reklam_bir")
+        val r2=Reklam(2,"reklam")
+        val r3=Reklam(3,"reklam_uc")
+        val r4=Reklam(4,"reklam_dort")
+
+
+        reklamlarListesi.add(r1)
+        reklamlarListesi.add(r2)
+        reklamlarListesi.add(r3)
+        reklamlarListesi.add(r4)
+
+        val reklamAdapter=ReklamAdapter(requireContext(),reklamlarListesi)
+        binding.reklamlarrv.adapter=reklamAdapter
 
         return binding.root
     }

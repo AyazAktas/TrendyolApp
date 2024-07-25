@@ -67,5 +67,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchViewAnasayfa" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/reklamlarrv"
+        android:layout_width="415dp"
+        android:layout_height="112dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/butonkategorirv" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

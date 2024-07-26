@@ -7,12 +7,15 @@
         android:icon="@drawable/baseline_home_24"
         android:title="Anasayfa" />
     <item
+        android:id="@+id/trendyolGoFragment"
         android:icon="@drawable/go"
         android:title="Trendyol Go" />
     <item
+        android:id="@+id/favorilerimFragment"
         android:icon="@drawable/baseline_favorite_border_24"
         android:title="Favorilerim" />
     <item
+        android:id="@+id/sepetimFragment"
         android:icon="@drawable/outline_shopping_cart_24"
         android:title="Sepetim" />
     <item

@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.trendyolapp.R
 import com.example.trendyolapp.databinding.FragmentAnasayfaBinding
 import com.example.trendyolapp.data.entity.Butonlar
+import com.example.trendyolapp.data.entity.Hizmet
 import com.example.trendyolapp.data.entity.Reklam
 import com.example.trendyolapp.ui.adapter.ButtonAdapter
+import com.example.trendyolapp.ui.adapter.HizmetAdapter
 import com.example.trendyolapp.ui.adapter.ReklamAdapter
 
 class AnasayfaFragment : Fragment() {
@@ -81,6 +83,34 @@ class AnasayfaFragment : Fragment() {
 
         val reklamAdapter=ReklamAdapter(requireContext(),reklamlarListesi)
         binding.reklamlarrv.adapter=reklamAdapter
+
+
+        binding.hizmetrv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val hizmetListesi=ArrayList<Hizmet>()
+        val h1=Hizmet(1,"Hızlı Market","hizlimarket")
+        val h2=Hizmet(2,"Yemek","yemek")
+        val h3=Hizmet(3,"Futbol Aşkı","futbolaski")
+        val h4=Hizmet(4,"Al, Sat, Kazan","alsatkazan")
+        val h5=Hizmet(5,"Trendyol Pozitif","trendeyolpozitif")
+        val h6=Hizmet(6,"Spora Başla","sporabasla")
+        val h7=Hizmet(7,"Finansal Çözüm","finansalcozumler")
+        val h8=Hizmet(8,"Kuponlar","kuponlar")
+        val h9=Hizmet(9,"Kredi Kartı","kredikarti")
+        val h10=Hizmet(10,"Kategoriler","kategoriler")
+        hizmetListesi.add(h1)
+        hizmetListesi.add(h2)
+        hizmetListesi.add(h3)
+        hizmetListesi.add(h4)
+        hizmetListesi.add(h5)
+        hizmetListesi.add(h6)
+        hizmetListesi.add(h7)
+        hizmetListesi.add(h8)
+        hizmetListesi.add(h9)
+        hizmetListesi.add(h10)
+
+        val hizmetAdapter=HizmetAdapter(requireContext(),hizmetListesi)
+        binding.hizmetrv.adapter=hizmetAdapter
+
 
         return binding.root
     }

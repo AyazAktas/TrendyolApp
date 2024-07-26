@@ -13,10 +13,34 @@
         <action
             android:id="@+id/action_anasayfaFragment_to_hesabimFragment"
             app:destination="@id/hesabimFragment" />
+        <action
+            android:id="@+id/action_anasayfaFragment_to_trendyolGoFragment"
+            app:destination="@id/trendyolGoFragment" />
+        <action
+            android:id="@+id/action_anasayfaFragment_to_favorilerimFragment"
+            app:destination="@id/favorilerimFragment" />
+        <action
+            android:id="@+id/action_anasayfaFragment_to_sepetimFragment"
+            app:destination="@id/sepetimFragment" />
     </fragment>
     <fragment
         android:id="@+id/hesabimFragment"
         android:name="com.example.trendyolapp.ui.fragment.HesabimFragment"
         android:label="fragment_hesabim"
         tools:layout="@layout/fragment_hesabim" />
+    <fragment
+        android:id="@+id/favorilerimFragment"
+        android:name="com.example.trendyolapp.ui.fragment.FavorilerimFragment"
+        android:label="fragment_favorilerim"
+        tools:layout="@layout/fragment_favorilerim" />
+    <fragment
+        android:id="@+id/sepetimFragment"
+        android:name="com.example.trendyolapp.ui.fragment.SepetimFragment"
+        android:label="fragment_sepetim"
+        tools:layout="@layout/fragment_sepetim" />
+    <fragment
+        android:id="@+id/trendyolGoFragment"
+        android:name="com.example.trendyolapp.ui.fragment.TrendyolGoFragment"
+        android:label="fragment_trendyol_go"
+        tools:layout="@layout/fragment_trendyol_go" />
 </navigation>

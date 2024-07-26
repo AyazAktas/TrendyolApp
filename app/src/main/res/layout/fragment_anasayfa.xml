@@ -6,97 +6,153 @@
     android:backgroundTint="#FFFFFF"
     tools:context="com.example.trendyolapp.ui.fragment.AnasayfaFragment">
 
-    <SearchView
-        android:id="@+id/searchViewAnasayfa"
-        android:layout_width="313dp"
-        android:layout_height="45dp"
-        android:background="@drawable/rounded_searchview_background"
-        android:backgroundTint="#EDEAEA"
-        android:queryHint="Aradığınız ürün, kategori veya markayı yazınız"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewMesajlar"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001"
-        app:searchIcon="@drawable/baseline_search_24" />
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <ImageView
-        android:id="@+id/imageViewMesajlar"
-        android:layout_width="33dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="2dp"
-        android:src="@drawable/baseline_mail_outline_24"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewBildirimler"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/searchViewAnasayfa"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageViewBildirimler"
-        android:layout_width="41dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="2dp"
-        android:src="@drawable/ic_launcher"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageViewMesajlar"
-        app:layout_constraintTop_toTopOf="parent" />
+            <SearchView
+                android:id="@+id/searchViewAnasayfa"
+                android:layout_width="313dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rounded_searchview_background"
+                android:backgroundTint="#EDEAEA"
+                android:queryHint="Aradığınız ürün, kategori veya markayı yazınız"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewMesajlar"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.001"
+                app:searchIcon="@drawable/baseline_search_24" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/butonkategorirv"
-        android:layout_width="250dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="6dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewMesajlar" />
+            <ImageView
+                android:id="@+id/imageViewMesajlar"
+                android:layout_width="33dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/baseline_mail_outline_24"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewBildirimler"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/searchViewAnasayfa"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="9dp"
-        android:backgroundTint="#F4F3F3"
-        android:drawableLeft="@drawable/searchkategori"
-        android:drawablePadding="0dp"
-        android:text="Kategoriler"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toStartOf="@+id/butonkategorirv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchViewAnasayfa" />
+            <ImageView
+                android:id="@+id/imageViewBildirimler"
+                android:layout_width="41dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/ic_launcher"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageViewMesajlar"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/reklamlarrv"
-        android:layout_width="415dp"
-        android:layout_height="112dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/butonkategorirv" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/butonkategorirv"
+                android:layout_width="250dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewMesajlar" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="16dp"
-        android:text="Himzetlerimizi Keşfet"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reklamlarrv" />
+            <Button
+                android:id="@+id/button"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="9dp"
+                android:backgroundTint="#F4F3F3"
+                android:drawableLeft="@drawable/searchkategori"
+                android:drawablePadding="0dp"
+                android:text="Kategoriler"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toStartOf="@+id/butonkategorirv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchViewAnasayfa" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/hizmetrv"
-        android:layout_width="414dp"
-        android:layout_height="94dp"
-        android:layout_marginTop="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/reklamlarrv"
+                android:layout_width="415dp"
+                android:layout_height="112dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/butonkategorirv" />
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="16dp"
+                android:text="Hizmetlerimizi Keşfet"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/reklamlarrv" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hizmetrv"
+                android:layout_width="414dp"
+                android:layout_height="94dp"
+                android:layout_marginTop="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/kazandirancark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hizmetrv" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="10dp"
+                android:text="Sana Özel Ürünler"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="4dp"
+                android:text="Tüm Ürünler"
+                android:textColor="#F44336"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/urunlerrv"
+                android:layout_width="wrap_content"
+                android:layout_height="390dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

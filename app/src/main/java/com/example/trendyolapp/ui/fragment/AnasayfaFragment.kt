@@ -11,9 +11,11 @@ import com.example.trendyolapp.databinding.FragmentAnasayfaBinding
 import com.example.trendyolapp.data.entity.Butonlar
 import com.example.trendyolapp.data.entity.Hizmet
 import com.example.trendyolapp.data.entity.Reklam
+import com.example.trendyolapp.data.entity.Urun
 import com.example.trendyolapp.ui.adapter.ButtonAdapter
 import com.example.trendyolapp.ui.adapter.HizmetAdapter
 import com.example.trendyolapp.ui.adapter.ReklamAdapter
+import com.example.trendyolapp.ui.adapter.UrunAdapter
 
 class AnasayfaFragment : Fragment() {
     private lateinit var binding: FragmentAnasayfaBinding
@@ -110,6 +112,28 @@ class AnasayfaFragment : Fragment() {
 
         val hizmetAdapter=HizmetAdapter(requireContext(),hizmetListesi)
         binding.hizmetrv.adapter=hizmetAdapter
+
+
+
+        binding.urunlerrv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val urunlistesi=ArrayList<Urun>()
+        val u1=Urun(1,"GIVENCHY","Givenchy Gentleman Edp 100 ml Erkek Parfüm","givenchy",4954)
+        val u2=Urun(2,"Bershka","Kısa kollu Machine Gun Kelly baskılı boxy fit t-shirt","mgktisort",450)
+        val u3=Urun(3,"Mitra Yayınları","Agnostisizm ve İlahi Tragedya - Diamond Tema, Kağıt Kapak ","diokitap",415)
+        val u4=Urun(4,"Wilson","Wilson Blade 25 V8 Tenis Raketi WR079310","tenisraketi",6260)
+        val u5=Urun(5,"İletişim Yayınları","Oğuz Atay - Tehlikeli Oyunlar","tehlikelioyunlar",230)
+        val u6=Urun(6,"YAMAHA","Yamaha Pacifica PA112VBL Elektro Gitar (Siyah)","elektrogitar",16487)
+
+        urunlistesi.add(u1)
+        urunlistesi.add(u2)
+        urunlistesi.add(u3)
+        urunlistesi.add(u4)
+        urunlistesi.add(u5)
+        urunlistesi.add(u6)
+
+        val urunAdapter=UrunAdapter(requireContext(),urunlistesi)
+        binding.urunlerrv.adapter=urunAdapter
+
 
 
         return binding.root

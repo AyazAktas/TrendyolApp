@@ -10,10 +10,12 @@ import com.example.trendyolapp.R
 import com.example.trendyolapp.databinding.FragmentAnasayfaBinding
 import com.example.trendyolapp.data.entity.Butonlar
 import com.example.trendyolapp.data.entity.Hizmet
+import com.example.trendyolapp.data.entity.Kupon
 import com.example.trendyolapp.data.entity.Reklam
 import com.example.trendyolapp.data.entity.Urun
 import com.example.trendyolapp.ui.adapter.ButtonAdapter
 import com.example.trendyolapp.ui.adapter.HizmetAdapter
+import com.example.trendyolapp.ui.adapter.KuponAdapter
 import com.example.trendyolapp.ui.adapter.ReklamAdapter
 import com.example.trendyolapp.ui.adapter.UrunAdapter
 
@@ -134,6 +136,18 @@ class AnasayfaFragment : Fragment() {
         val urunAdapter=UrunAdapter(requireContext(),urunlistesi)
         binding.urunlerrv.adapter=urunAdapter
 
+
+
+        binding.kuponlarrv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val kuponlarListesi=ArrayList<Kupon>()
+        val k1=Kupon(1,"kuponbir")
+        val k2=Kupon(2,"kuponiki")
+
+        kuponlarListesi.add(k1)
+        kuponlarListesi.add(k2)
+
+        val kuponAdapter=KuponAdapter(requireContext(),kuponlarListesi)
+        binding.kuponlarrv.adapter=kuponAdapter
 
 
         return binding.root

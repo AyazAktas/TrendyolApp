@@ -47,7 +47,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="44dp"
                 android:text="3.753 TL"
-                android:textColor="#FF5722"
+                android:textColor="#f87c1c"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/urunMarka" />
 

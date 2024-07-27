@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_anasayfaFragment_to_sepetimFragment"
             app:destination="@id/sepetimFragment" />
+        <action
+            android:id="@+id/urun_gecis"
+            app:destination="@id/urunDetayFragment" />
     </fragment>
     <fragment
         android:id="@+id/hesabimFragment"
@@ -43,4 +46,13 @@
         android:name="com.example.trendyolapp.ui.fragment.TrendyolGoFragment"
         android:label="fragment_trendyol_go"
         tools:layout="@layout/fragment_trendyol_go" />
+    <fragment
+        android:id="@+id/urunDetayFragment"
+        android:name="com.example.trendyolapp.ui.fragment.UrunDetayFragment"
+        android:label="fragment_urun_detay"
+        tools:layout="@layout/fragment_urun_detay" >
+        <argument
+            android:name="urun"
+            app:argType="com.example.trendyolapp.data.entity.Urun" />
+    </fragment>
 </navigation>

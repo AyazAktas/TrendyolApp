@@ -18,7 +18,7 @@
 
             <SearchView
                 android:id="@+id/searchViewAnasayfa"
-                android:layout_width="313dp"
+                android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:background="@drawable/rounded_searchview_background"
                 android:backgroundTint="#EDEAEA"
@@ -34,8 +34,8 @@
 
             <ImageView
                 android:id="@+id/imageViewMesajlar"
-                android:layout_width="33dp"
-                android:layout_height="45dp"
+                android:layout_width="32dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="2dp"
                 android:src="@drawable/baseline_mail_outline_24"
                 app:layout_constraintEnd_toStartOf="@+id/imageViewBildirimler"
@@ -56,7 +56,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/butonkategorirv"
-                android:layout_width="250dp"
+                android:layout_width="0dp"
                 android:layout_height="42dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="6dp"
@@ -66,7 +66,7 @@
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="42dp"
                 android:layout_marginStart="6dp"
                 android:layout_marginTop="9dp"
@@ -81,7 +81,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/reklamlarrv"
-                android:layout_width="415dp"
+                android:layout_width="wrap_content"
                 android:layout_height="112dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +101,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/hizmetrv"
-                android:layout_width="414dp"
+                android:layout_width="wrap_content"
                 android:layout_height="94dp"
                 android:layout_marginTop="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -110,8 +110,8 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="0dp"
-                android:layout_height="70dp"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/kazandirancark"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -138,7 +138,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="4dp"
                 android:text="Tüm Ürünler"
-                android:textColor="#F44336"
+                android:textColor="#f87c1c"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -147,10 +147,18 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/urunlerrv"
                 android:layout_width="wrap_content"
-                android:layout_height="390dp"
+                android:layout_height="250dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/kuponlarrv"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/urunlerrv" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

@@ -11,13 +11,18 @@ class UrunViewModel : ViewModel() {
     val favoriUrunler: LiveData<MutableList<Urun>> get() = _favoriUrunler
 
     fun urunEkle(urun: Urun) {
-        // Önce mevcut listeyi al
         val mevcutFavoriUrunler = _favoriUrunler.value ?: mutableListOf()
-
-        // Eğer ürün listede değilse ekle
         if (urun !in mevcutFavoriUrunler) {
             mevcutFavoriUrunler.add(urun)
-            _favoriUrunler.value = mevcutFavoriUrunler // LiveData güncellemesi
+            _favoriUrunler.value = mevcutFavoriUrunler
+        }
+    }
+
+    fun urunKaldir(urun: Urun) {
+        val mevcutFavoriUrunler = _favoriUrunler.value ?: mutableListOf()
+        if (urun in mevcutFavoriUrunler) {
+            mevcutFavoriUrunler.remove(urun)
+            _favoriUrunler.value = mevcutFavoriUrunler
         }
     }
 }

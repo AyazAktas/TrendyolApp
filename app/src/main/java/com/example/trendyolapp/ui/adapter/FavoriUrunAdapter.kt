@@ -1,4 +1,5 @@
 package com.example.trendyolapp.ui.adapter
+
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,8 +9,10 @@ import com.example.trendyolapp.data.entity.Urun
 import com.example.trendyolapp.databinding.CardViewFavorilerBinding
 import com.example.trendyolapp.ui.fragment.AnasayfaFragmentDirections
 import com.example.trendyolapp.ui.fragment.FavorilerimFragmentDirections
+import com.example.trendyolapp.ui.viewmodel.UrunViewModel
+import com.google.android.material.snackbar.Snackbar
 
-class FavoriUrunAdapter(private val mContext: Context, private var urunListesi: List<Urun>) : RecyclerView.Adapter<FavoriUrunAdapter.CardTasarimTutucu>() {
+class FavoriUrunAdapter(private val mContext: Context, private var urunListesi: List<Urun>, private val urunViewModel: UrunViewModel) : RecyclerView.Adapter<FavoriUrunAdapter.CardTasarimTutucu>() {
 
     inner class CardTasarimTutucu(val tasarim: CardViewFavorilerBinding) : RecyclerView.ViewHolder(tasarim.root)
 
@@ -32,6 +35,12 @@ class FavoriUrunAdapter(private val mContext: Context, private var urunListesi: 
         u.cardViewFavoriler.setOnClickListener {
             val gecis = FavorilerimFragmentDirections.favoriUrunGecis(urun = urun)
             Navigation.findNavController(it).navigate(gecis)
+        }
+        u.imageViewKaldR.setOnClickListener {
+            Snackbar.make(it,"${urun.urunMarka}'i favorilerinizden kaldırmak istediğinize emin misiniz?",Snackbar.LENGTH_SHORT)
+                .setAction("Evet") {
+                    urunViewModel.urunKaldir(urun)
+                }.show()
         }
     }
 

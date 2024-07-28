@@ -2,9 +2,12 @@ package com.example.trendyolapp.ui.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trendyolapp.data.entity.Urun
 import com.example.trendyolapp.databinding.CardViewFavorilerBinding
+import com.example.trendyolapp.ui.fragment.AnasayfaFragmentDirections
+import com.example.trendyolapp.ui.fragment.FavorilerimFragmentDirections
 
 class FavoriUrunAdapter(private val mContext: Context, private var urunListesi: List<Urun>) : RecyclerView.Adapter<FavoriUrunAdapter.CardTasarimTutucu>() {
 
@@ -26,6 +29,10 @@ class FavoriUrunAdapter(private val mContext: Context, private var urunListesi: 
         u.textViewMarka.text = urun.urunMarka
         u.textViewFiyat.text = "${urun.urunFiyat} TL"
         u.textViewAciklama.text = urun.urunAciklama
+        u.cardViewFavoriler.setOnClickListener {
+            val gecis = FavorilerimFragmentDirections.favoriUrunGecis(urun = urun)
+            Navigation.findNavController(it).navigate(gecis)
+        }
     }
 
     fun updateData(newUrunListesi: List<Urun>) {

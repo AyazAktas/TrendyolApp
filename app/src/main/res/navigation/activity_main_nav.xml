@@ -54,5 +54,8 @@
         <argument
             android:name="urun"
             app:argType="com.example.trendyolapp.data.entity.Urun" />
+        <action
+            android:id="@+id/sepeteGecis"
+            app:destination="@id/sepetimFragment" />
     </fragment>
 </navigation>

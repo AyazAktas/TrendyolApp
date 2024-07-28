@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.trendyolapp.databinding.CardViewButonBinding
 import com.example.trendyolapp.data.entity.Butonlar
 
-class ButtonAdapter(private val mContext: Context, private val butonListesi: List<Butonlar>) : RecyclerView.Adapter<ButtonAdapter.CardTasarimHolder>() {
+class ButtonAdapter(private val mContext: Context, private var butonListesi: List<Butonlar>) : RecyclerView.Adapter<ButtonAdapter.CardTasarimHolder>() {
 
     inner class CardTasarimHolder(val tasarim: CardViewButonBinding) : RecyclerView.ViewHolder(tasarim.root)
 
@@ -26,4 +26,5 @@ class ButtonAdapter(private val mContext: Context, private val butonListesi: Lis
 
         b.buttonKategori.text = buton.katogoriAd
     }
+
 }

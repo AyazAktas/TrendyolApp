@@ -15,16 +15,12 @@ class FavorilerimFragment : Fragment() {
     private lateinit var binding: FragmentFavorilerimBinding
     private val urunViewModel: UrunViewModel by activityViewModels()
     private lateinit var favoriUrunAdapter: FavoriUrunAdapter
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentFavorilerimBinding.inflate(inflater, container, false)
 
-        // Initialize the adapter with the ViewModel
         favoriUrunAdapter = FavoriUrunAdapter(requireContext(), arrayListOf(), urunViewModel)
         binding.favorilerrv.layoutManager = LinearLayoutManager(requireContext())
         binding.favorilerrv.adapter = favoriUrunAdapter
-
-        // Observe the favorite products LiveData
         urunViewModel.favoriUrunler.observe(viewLifecycleOwner) { urunler ->
             favoriUrunAdapter.updateData(urunler)
         }

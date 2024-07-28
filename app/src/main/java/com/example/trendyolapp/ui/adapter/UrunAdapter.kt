@@ -40,4 +40,6 @@ class UrunAdapter(private val mContext: Context, private var urunListesi: List<U
         urunListesi = newUrunListesi
         notifyDataSetChanged()
     }
+
+
 }

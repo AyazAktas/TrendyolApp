@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.trendyolapp.R
 import com.example.trendyolapp.databinding.FragmentAnasayfaBinding
@@ -24,8 +25,6 @@ class AnasayfaFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentAnasayfaBinding.inflate(inflater, container, false)
-
-        // RecyclerView için LayoutManager ayarlama
         binding.butonkategorirv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
 
@@ -152,4 +151,5 @@ class AnasayfaFragment : Fragment() {
 
         return binding.root
     }
+
 }

@@ -35,7 +35,11 @@
         android:id="@+id/favorilerimFragment"
         android:name="com.example.trendyolapp.ui.fragment.FavorilerimFragment"
         android:label="fragment_favorilerim"
-        tools:layout="@layout/fragment_favorilerim" />
+        tools:layout="@layout/fragment_favorilerim" >
+        <argument
+            android:name="urun"
+            app:argType="com.example.trendyolapp.data.entity.Urun" />
+    </fragment>
     <fragment
         android:id="@+id/sepetimFragment"
         android:name="com.example.trendyolapp.ui.fragment.SepetimFragment"
@@ -57,5 +61,8 @@
         <action
             android:id="@+id/sepeteGecis"
             app:destination="@id/sepetimFragment" />
+        <action
+            android:id="@+id/favoriGecis"
+            app:destination="@id/favorilerimFragment" />
     </fragment>
 </navigation>

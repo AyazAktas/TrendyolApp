@@ -12,86 +12,84 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imageViewResim"
-                android:layout_width="177dp"
-                android:layout_height="200dp"
-                android:layout_marginStart="2dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="186dp"
+                android:layout_height="162dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/textViewAciklama"
+                app:layout_constraintHorizontal_bias="0.076"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/mgktisort" />
 
             <TextView
                 android:id="@+id/textViewMarka"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
                 android:layout_marginTop="16dp"
                 android:text="Marka"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageViewResim"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textViewAciklama"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
-                android:layout_marginTop="13dp"
+                android:layout_width="220dp"
+                android:layout_height="29dp"
+                android:layout_marginTop="12dp"
                 android:text="Ürün Açıklaması"
                 android:textColor="@color/material_dynamic_neutral50"
-                android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/imageViewResim"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewMarka" />
 
             <ImageView
                 android:id="@+id/imageView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="41dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintStart_toEndOf="@+id/imageViewResim"
                 app:layout_constraintTop_toBottomOf="@+id/textViewAciklama"
                 app:srcCompat="@drawable/outline_local_shipping_24" />
 
             <TextView
                 android:id="@+id/textView9"
-                android:layout_width="59dp"
-                android:layout_height="48dp"
+                android:layout_width="90dp"
+                android:layout_height="17dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="12dp"
                 android:text="Hızlı Teslimat"
-                android:textAlignment="center"
                 android:textColor="@color/material_dynamic_neutral50"
-                app:layout_constraintEnd_toEndOf="@+id/imageView8"
-                app:layout_constraintHorizontal_bias="0.4"
-                app:layout_constraintStart_toStartOf="@+id/imageView8"
-                app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+                app:layout_constraintStart_toEndOf="@+id/imageView8"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAciklama" />
 
             <TextView
                 android:id="@+id/textViewFiyat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="14dp"
                 android:text="450 Tl"
                 android:textColor="#f87c1c"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageViewResim" />
+                app:layout_constraintStart_toEndOf="@+id/imageViewResim"
+                app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
             <Button
                 android:id="@+id/buttonSepet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="10dp"
                 android:backgroundTint="#f87c1c"
                 android:text="Sepete Ekle"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textViewFiyat" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

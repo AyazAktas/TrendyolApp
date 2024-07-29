@@ -8,8 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.trendyolapp.data.entity.Urun
 import com.example.trendyolapp.databinding.CardViewUrunlerBinding
 import com.example.trendyolapp.ui.fragment.AnasayfaFragmentDirections
+import com.example.trendyolapp.ui.fragment.TumUrunlerFragmentDirections
 
-class UrunAdapter(private val mContext: Context, private var urunListesi: List<Urun>) : RecyclerView.Adapter<UrunAdapter.CardTasarimTutucu>() {
+class UrunAdapter(
+    private val mContext: Context,
+    private var urunListesi: List<Urun>,
+    private val fromFragment: String
+) : RecyclerView.Adapter<UrunAdapter.CardTasarimTutucu>() {
 
     inner class CardTasarimTutucu(val tasarim: CardViewUrunlerBinding) : RecyclerView.ViewHolder(tasarim.root)
 
@@ -31,8 +36,15 @@ class UrunAdapter(private val mContext: Context, private var urunListesi: List<U
         u.urunaciklama.text = urun.urunAciklama
 
         u.urunlercv.setOnClickListener {
-            val gecis = AnasayfaFragmentDirections.urunGecis(urun = urun)
-            Navigation.findNavController(it).navigate(gecis)
+            val navController = Navigation.findNavController(it)
+            val action = when (fromFragment) {
+                "Anasayfa" -> AnasayfaFragmentDirections.urunGecis(urun = urun)
+                "TumUrunler" -> TumUrunlerFragmentDirections.tumdenUruneGecis(urun = urun)
+                else -> null
+            }
+            action?.let {
+                navController.navigate(it)
+            }
         }
     }
 
@@ -40,6 +52,4 @@ class UrunAdapter(private val mContext: Context, private var urunListesi: List<U
         urunListesi = newUrunListesi
         notifyDataSetChanged()
     }
-
-
 }

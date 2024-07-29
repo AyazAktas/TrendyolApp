@@ -6,11 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.FavorilerimFragment" >
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="276dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#F4F3F3"
+        android:drawablePadding="0dp"
+        android:text="Kategoriler"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/butonkategorirv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <SearchView
+        android:id="@+id/searchViewAnasayfa"
+        android:layout_width="256dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rounded_searchview_background"
+        android:backgroundTint="#EDEAEA"
+        android:queryHint="Aradığınız ürün, kategori veya markayı yazınız"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewMesajlar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:searchIcon="@drawable/baseline_search_24" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Favorilerim Ekranı"
+        android:text="Favorilerim"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,8 +55,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.143" />
 </androidx.constraintlayout.widget.ConstraintLayout>

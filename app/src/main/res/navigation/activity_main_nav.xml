@@ -25,6 +25,9 @@
         <action
             android:id="@+id/urun_gecis"
             app:destination="@id/urunDetayFragment" />
+        <action
+            android:id="@+id/tum_urunler_gecis"
+            app:destination="@id/tumUrunlerFragment2" />
     </fragment>
     <fragment
         android:id="@+id/hesabimFragment"
@@ -67,5 +70,13 @@
         <action
             android:id="@+id/favoriGecis"
             app:destination="@id/favorilerimFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tumUrunlerFragment2"
+        android:name="com.example.trendyolapp.ui.fragment.TumUrunlerFragment"
+        android:label="TumUrunlerFragment" >
+        <action
+            android:id="@+id/tumden_urune_gecis"
+            app:destination="@id/urunDetayFragment" />
     </fragment>
 </navigation>

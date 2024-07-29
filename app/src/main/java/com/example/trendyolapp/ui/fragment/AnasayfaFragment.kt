@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.trendyolapp.R
 import com.example.trendyolapp.databinding.FragmentAnasayfaBinding
@@ -22,7 +23,7 @@ import com.example.trendyolapp.ui.adapter.UrunAdapter
 
 class AnasayfaFragment : Fragment() {
     private lateinit var binding: FragmentAnasayfaBinding
-
+    val urunlistesi=ArrayList<Urun>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentAnasayfaBinding.inflate(inflater, container, false)
         binding.butonkategorirv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -35,17 +36,17 @@ class AnasayfaFragment : Fragment() {
         val b4=Butonlar(4,"Spor&Outdoor")
         val b5=Butonlar(5,"Elektronik")
         val b6=Butonlar(6,"Moda")
-        val b7=Butonlar(6,"Süpermarket")
-        val b8=Butonlar(6,"Saat & Aksesuar")
-        val b9=Butonlar(6,"Oto & Yapı Market")
-        val b10=Butonlar(6,"Anne & Çocuk")
-        val b11=Butonlar(6,"Kozmetik")
-        val b12=Butonlar(6,"Ayakkabı & Çanta")
-        val b13=Butonlar(6,"Luxury")
-        val b14=Butonlar(6,"Dolap")
-        val b15=Butonlar(6,"Kitap & Kırtasiye")
-        val b16=Butonlar(6,"Hobi & Müzik")
-        val b17=Butonlar(6,"İş Yerine Özel")
+        val b7=Butonlar(7,"Süpermarket")
+        val b8=Butonlar(8,"Saat & Aksesuar")
+        val b9=Butonlar(9,"Oto & Yapı Market")
+        val b10=Butonlar(10,"Anne & Çocuk")
+        val b11=Butonlar(11,"Kozmetik")
+        val b12=Butonlar(12,"Ayakkabı & Çanta")
+        val b13=Butonlar(13,"Luxury")
+        val b14=Butonlar(14,"Dolap")
+        val b15=Butonlar(15,"Kitap & Kırtasiye")
+        val b16=Butonlar(16,"Hobi & Müzik")
+        val b17=Butonlar(17,"İş Yerine Özel")
 
         butonlarListesi.add(b1)
         butonlarListesi.add(b2)
@@ -115,9 +116,8 @@ class AnasayfaFragment : Fragment() {
         binding.hizmetrv.adapter=hizmetAdapter
 
 
-
+        urunlistesi.clear()
         binding.urunlerrv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        val urunlistesi=ArrayList<Urun>()
         val u1=Urun(1,"GIVENCHY","Givenchy Gentleman Edp 100 ml Erkek Parfüm","givenchy",4954)
         val u2=Urun(2,"Bershka","Kısa kollu Machine Gun Kelly baskılı boxy fit t-shirt","mgktisort",450)
         val u3=Urun(3,"Mitra Yayınları","Agnostisizm ve İlahi Tragedya - Diamond Tema, Kağıt Kapak ","diokitap",415)
@@ -132,7 +132,7 @@ class AnasayfaFragment : Fragment() {
         urunlistesi.add(u5)
         urunlistesi.add(u6)
 
-        val urunAdapter=UrunAdapter(requireContext(),urunlistesi)
+        val urunAdapter = UrunAdapter(requireContext(), urunlistesi, "Anasayfa")
         binding.urunlerrv.adapter=urunAdapter
 
 
@@ -148,6 +148,12 @@ class AnasayfaFragment : Fragment() {
         val kuponAdapter=KuponAdapter(requireContext(),kuponlarListesi)
         binding.kuponlarrv.adapter=kuponAdapter
 
+
+        binding.textViewTumUrunler.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putSerializable("urunListesi", ArrayList(urunlistesi))  // Yeni bir ArrayList oluşturun
+            Navigation.findNavController(it).navigate(R.id.tum_urunler_gecis, bundle)
+        }
 
         return binding.root
     }

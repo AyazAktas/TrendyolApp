@@ -33,7 +33,7 @@ class UrunDetayFragment : Fragment() {
             Snackbar.make(it, "Ürün favorilere eklendi.", Snackbar.LENGTH_SHORT).show()
         }
 
-        binding.buttonSepeteEkle.setOnClickListener {  // Sepete ekle butonuna tıklama olayı
+        binding.buttonSepeteEkle.setOnClickListener {
             urunViewModel.urunSepeteEkle(urun)
             Snackbar.make(it, "Ürün sepete eklendi.", Snackbar.LENGTH_SHORT).show()
         }

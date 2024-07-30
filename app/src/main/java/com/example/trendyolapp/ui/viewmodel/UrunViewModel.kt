@@ -50,5 +50,7 @@ class UrunViewModel : ViewModel() {
     fun getSepetUrunSayisi(): Int {
         return _sepetUrunler.value?.size ?: 0
     }
-
+    fun getToplamFiyat(): Int {
+        return _sepetUrunler.value?.sumOf { it.urunFiyat } ?: 0
+    }
 }

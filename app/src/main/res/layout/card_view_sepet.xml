@@ -42,21 +42,22 @@
 
             <TextView
                 android:id="@+id/textViewMarkaDetay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="107dp"
+                android:layout_height="18dp"
                 android:layout_marginStart="1dp"
-                android:layout_marginTop="52dp"
+                android:layout_marginTop="60dp"
                 android:layout_marginEnd="226dp"
                 android:text="TextView"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textViewAciklama"
                 android:layout_width="278dp"
-                android:layout_height="33dp"
+                android:layout_height="35dp"
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="8dp"
                 android:text="TextView"
@@ -82,14 +83,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="148dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="15dp"
                 android:text="TextView"
                 android:textColor="#f87c1c"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
             <ImageView
                 android:id="@+id/imageViewSepettenKaldir"

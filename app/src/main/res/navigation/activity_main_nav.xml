@@ -54,10 +54,12 @@
         android:name="com.example.trendyolapp.ui.fragment.SepetimFragment"
         android:label="fragment_sepetim"
         tools:layout="@layout/fragment_sepetim" >
-        <argument android:name="urun" />
         <argument
-            android:name="urunSepet"
+            android:name="urun"
             app:argType="com.example.trendyolapp.data.entity.Urun" />
+        <action
+            android:id="@+id/sepet_detay_gecis"
+            app:destination="@id/urunDetayFragment" />
     </fragment>
     <fragment
         android:id="@+id/trendyolGoFragment"

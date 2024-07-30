@@ -46,6 +46,7 @@ class UrunAdapter(
                 navController.navigate(it)
             }
         }
+
     }
 
     fun updateData(newUrunListesi: List<Urun>) {

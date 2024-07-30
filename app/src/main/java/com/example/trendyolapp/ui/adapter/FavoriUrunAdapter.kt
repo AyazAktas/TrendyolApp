@@ -36,6 +36,10 @@ class FavoriUrunAdapter(private val mContext: Context, private var urunListesi: 
             val gecis = FavorilerimFragmentDirections.favoriUrunGecis(urun = urun)
             Navigation.findNavController(it).navigate(gecis)
         }
+        u.buttonSepet.setOnClickListener {
+            urunViewModel.urunSepeteEkle(urun)
+            Snackbar.make(it, "Ürün sepete eklendi.", Snackbar.LENGTH_SHORT).show()
+        }
         u.imageViewKaldR.setOnClickListener {
             Snackbar.make(it,"${urun.urunMarka}'i favorilerinizden kaldırmak istediğinize emin misiniz?",Snackbar.LENGTH_SHORT)
                 .setAction("Evet") {

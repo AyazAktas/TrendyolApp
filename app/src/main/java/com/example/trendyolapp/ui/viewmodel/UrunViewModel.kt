@@ -1,6 +1,4 @@
-// UrunViewModel.kt
 package com.example.trendyolapp.ui.viewmodel
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

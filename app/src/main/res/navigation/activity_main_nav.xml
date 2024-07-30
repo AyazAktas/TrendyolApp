@@ -45,12 +45,20 @@
         <action
             android:id="@+id/favoriUrunGecis"
             app:destination="@id/urunDetayFragment" />
+        <action
+            android:id="@+id/favoriden_sepete_gecis"
+            app:destination="@id/sepetimFragment" />
     </fragment>
     <fragment
         android:id="@+id/sepetimFragment"
         android:name="com.example.trendyolapp.ui.fragment.SepetimFragment"
         android:label="fragment_sepetim"
-        tools:layout="@layout/fragment_sepetim" />
+        tools:layout="@layout/fragment_sepetim" >
+        <argument android:name="urun" />
+        <argument
+            android:name="urunSepet"
+            app:argType="com.example.trendyolapp.data.entity.Urun" />
+    </fragment>
     <fragment
         android:id="@+id/trendyolGoFragment"
         android:name="com.example.trendyolapp.ui.fragment.TrendyolGoFragment"

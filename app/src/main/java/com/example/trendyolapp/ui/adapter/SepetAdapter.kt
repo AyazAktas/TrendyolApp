@@ -10,6 +10,7 @@ import com.example.trendyolapp.databinding.CardViewSepetBinding
 import com.example.trendyolapp.ui.fragment.FavorilerimFragmentDirections
 import com.example.trendyolapp.ui.fragment.SepetimFragmentDirections
 import com.example.trendyolapp.ui.viewmodel.UrunViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class SepetAdapter(
     private val mContext: Context,
@@ -31,6 +32,13 @@ class SepetAdapter(
     override fun onBindViewHolder(holder: CardTasarimTutucu, position: Int) {
         val urun = urunListesi[position]
         val u = holder.tasarim
+        u.imageViewSepettenKaldir.setOnClickListener {
+            Snackbar.make(it,"${urun.urunMarka}'i sepetten kaldırmak istediğinize emin misiniz?",
+                Snackbar.LENGTH_SHORT)
+                .setAction("Evet") {
+                    urunViewModel.urunSepettenKaldir(urun)
+                }.show()
+        }
         holder.tasarim.textViewMarka.text = urun.urunMarka
         holder.tasarim.textViewMarkaDetay.text=urun.urunMarka
         holder.tasarim.textViewFiyat.text = "${urun.urunFiyat} TL"
@@ -40,8 +48,7 @@ class SepetAdapter(
             Navigation.findNavController(it).navigate(gecis)
         }
         holder.tasarim.imageView2.setImageResource(mContext.resources.getIdentifier(urun.urunResim, "drawable", mContext.packageName))
-        val urunSayisi = urunListesi.count { it == urun }
-        holder.tasarim.textViewUrunSayisi.text = "x$urunSayisi"
+
     }
 
     fun updateUrunListesi(yeniUrunListesi: List<Urun>) {

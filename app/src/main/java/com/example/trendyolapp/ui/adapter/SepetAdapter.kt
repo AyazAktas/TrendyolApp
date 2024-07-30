@@ -7,7 +7,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trendyolapp.data.entity.Urun
 import com.example.trendyolapp.databinding.CardViewSepetBinding
-import com.example.trendyolapp.ui.fragment.FavorilerimFragmentDirections
 import com.example.trendyolapp.ui.fragment.SepetimFragmentDirections
 import com.example.trendyolapp.ui.viewmodel.UrunViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -39,6 +38,7 @@ class SepetAdapter(
                     urunViewModel.urunSepettenKaldir(urun)
                 }.show()
         }
+
         u.imageButton.setOnClickListener {
             urunViewModel.urunEkle(urun)
             Snackbar.make(it, "Ürün favorilere eklendi.", Snackbar.LENGTH_SHORT).show()

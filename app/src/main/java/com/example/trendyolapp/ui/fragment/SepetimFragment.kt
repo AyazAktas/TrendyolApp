@@ -24,6 +24,7 @@ class SepetimFragment : Fragment() {
         sepetimadapter = SepetAdapter(requireContext(), arrayListOf(), urunViewModel)
         binding.sepetimrv.layoutManager = LinearLayoutManager(requireContext())
         binding.sepetimrv.adapter = sepetimadapter
+        binding.textViewUrunSayisi.text="(${urunViewModel.getSepetUrunSayisi()} ürün)"
         urunViewModel.sepetUrunler.observe(viewLifecycleOwner) { urunler ->
             sepetimadapter.updateUrunListesi(urunler)
         }

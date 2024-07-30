@@ -47,4 +47,8 @@ class UrunViewModel : ViewModel() {
     fun getSepetUrunleri(): List<Urun> {
         return _sepetUrunler.value ?: listOf()
     }
+    fun getSepetUrunSayisi(): Int {
+        return _sepetUrunler.value?.size ?: 0
+    }
+
 }

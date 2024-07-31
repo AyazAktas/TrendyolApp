@@ -12,6 +12,9 @@ class UrunViewModel : ViewModel() {
     private val _sepetUrunler = MutableLiveData<MutableList<Urun>>(mutableListOf())
     val sepetUrunler: LiveData<MutableList<Urun>> get() = _sepetUrunler
 
+    private val _siparisUrunler = MutableLiveData<MutableList<Urun>>(mutableListOf())
+    val siparisUrunler: LiveData<MutableList<Urun>> get() = _siparisUrunler
+
     fun urunEkle(urun: Urun): Boolean {
         val mevcutFavoriUrunler = _favoriUrunler.value ?: mutableListOf()
         return if (mevcutFavoriUrunler.none { it.id == urun.id }) {
@@ -41,6 +44,18 @@ class UrunViewModel : ViewModel() {
         val mevcutSepetUrunler = _sepetUrunler.value ?: mutableListOf()
         mevcutSepetUrunler.remove(urun)
         _sepetUrunler.value = mevcutSepetUrunler
+    }
+
+    fun urunSipariseEkle(urun: Urun) {
+        val mevcutSiparisUrunler = mutableListOf<Urun>()
+        mevcutSiparisUrunler.add(urun)
+        _siparisUrunler.value = mevcutSiparisUrunler
+    }
+
+    fun urunSiparistenKaldir(urun: Urun) {
+        val mevcutSiparisUrunler = _siparisUrunler.value ?: mutableListOf()
+        mevcutSiparisUrunler.remove(urun)
+        _siparisUrunler.value = mevcutSiparisUrunler
     }
 
     fun getSepetUrunleri(): List<Urun> {

@@ -83,6 +83,9 @@
         <action
             android:id="@+id/resim_sepete_gecis"
             app:destination="@id/sepetimFragment" />
+        <action
+            android:id="@+id/odeme_gecis"
+            app:destination="@id/odemeSayfasiFragment" />
     </fragment>
     <fragment
         android:id="@+id/tumUrunlerFragment2"
@@ -91,5 +94,14 @@
         <action
             android:id="@+id/tumden_urune_gecis"
             app:destination="@id/urunDetayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/odemeSayfasiFragment"
+        android:name="com.example.trendyolapp.ui.fragment.OdemeSayfasiFragment"
+        android:label="fragment_odeme_sayfasi"
+        tools:layout="@layout/fragment_odeme_sayfasi" >
+        <argument
+            android:name="urun"
+            app:argType="com.example.trendyolapp.data.entity.Urun" />
     </fragment>
 </navigation>

@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.trendyolapp.R
 import com.example.trendyolapp.databinding.FragmentUrunDetayBinding
@@ -41,7 +41,13 @@ class UrunDetayFragment : Fragment() {
         }
 
         binding.imageViewMesajlar.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.resim_sepete_gecis)
+            findNavController().navigate(R.id.resim_sepete_gecis)
+        }
+
+        binding.buttonSimdiAl.setOnClickListener {
+            urunViewModel.urunSipariseEkle(urun)
+            val gecis = UrunDetayFragmentDirections.odemeGecis(urun)
+            findNavController().navigate(gecis)
         }
 
         binding.buttonSepeteEkle.setOnClickListener {

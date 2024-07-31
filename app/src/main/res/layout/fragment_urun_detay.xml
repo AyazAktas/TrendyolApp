@@ -141,7 +141,7 @@
             app:layout_constraintVertical_bias="0.229" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/buttonSimdiAl"
             android:layout_width="146dp"
             android:layout_height="51dp"
             android:layout_marginTop="30dp"

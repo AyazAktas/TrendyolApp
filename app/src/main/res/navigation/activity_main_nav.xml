@@ -80,6 +80,9 @@
         <action
             android:id="@+id/favoriGecis"
             app:destination="@id/favorilerimFragment" />
+        <action
+            android:id="@+id/resim_sepete_gecis"
+            app:destination="@id/sepetimFragment" />
     </fragment>
     <fragment
         android:id="@+id/tumUrunlerFragment2"

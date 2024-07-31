@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
+import com.example.trendyolapp.R
 import com.example.trendyolapp.databinding.FragmentUrunDetayBinding
 import com.example.trendyolapp.ui.viewmodel.UrunViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -36,6 +38,10 @@ class UrunDetayFragment : Fragment() {
             } else {
                 Snackbar.make(it, "Ürün zaten favorilerde.", Snackbar.LENGTH_SHORT).show()
             }
+        }
+
+        binding.imageViewMesajlar.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.resim_sepete_gecis)
         }
 
         binding.buttonSepeteEkle.setOnClickListener {

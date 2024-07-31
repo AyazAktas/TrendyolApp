@@ -12,44 +12,45 @@ class UrunViewModel : ViewModel() {
     private val _sepetUrunler = MutableLiveData<MutableList<Urun>>(mutableListOf())
     val sepetUrunler: LiveData<MutableList<Urun>> get() = _sepetUrunler
 
-    fun urunEkle(urun: Urun) {
+    fun urunEkle(urun: Urun): Boolean {
         val mevcutFavoriUrunler = _favoriUrunler.value ?: mutableListOf()
-        if (urun !in mevcutFavoriUrunler) {
+        return if (mevcutFavoriUrunler.none { it.id == urun.id }) {
             mevcutFavoriUrunler.add(urun)
             _favoriUrunler.value = mevcutFavoriUrunler
+            true
+        } else {
+            false
         }
     }
 
     fun urunKaldir(urun: Urun) {
         val mevcutFavoriUrunler = _favoriUrunler.value ?: mutableListOf()
-        if (urun in mevcutFavoriUrunler) {
-            mevcutFavoriUrunler.remove(urun)
+        if (mevcutFavoriUrunler.any { it.id == urun.id }) {
+            mevcutFavoriUrunler.removeAll { it.id == urun.id }
             _favoriUrunler.value = mevcutFavoriUrunler
         }
     }
 
     fun urunSepeteEkle(urun: Urun) {
         val mevcutSepetUrunler = _sepetUrunler.value ?: mutableListOf()
-        if (urun !in mevcutSepetUrunler) {
-            mevcutSepetUrunler.add(urun)
-            _sepetUrunler.value = mevcutSepetUrunler
-        }
+        mevcutSepetUrunler.add(urun)
+        _sepetUrunler.value = mevcutSepetUrunler
     }
 
     fun urunSepettenKaldir(urun: Urun) {
         val mevcutSepetUrunler = _sepetUrunler.value ?: mutableListOf()
-        if (urun in mevcutSepetUrunler) {
-            mevcutSepetUrunler.remove(urun)
-            _sepetUrunler.value = mevcutSepetUrunler
-        }
+        mevcutSepetUrunler.remove(urun)
+        _sepetUrunler.value = mevcutSepetUrunler
     }
 
     fun getSepetUrunleri(): List<Urun> {
         return _sepetUrunler.value ?: listOf()
     }
+
     fun getSepetUrunSayisi(): Int {
         return _sepetUrunler.value?.size ?: 0
     }
+
     fun getToplamFiyat(): Int {
         return _sepetUrunler.value?.sumOf { it.urunFiyat } ?: 0
     }

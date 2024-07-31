@@ -40,9 +40,14 @@ class SepetAdapter(
         }
 
         u.imageButton.setOnClickListener {
-            urunViewModel.urunEkle(urun)
-            Snackbar.make(it, "Ürün favorilere eklendi.", Snackbar.LENGTH_SHORT).show()
+            val eklendi = urunViewModel.urunEkle(urun)
+            if (eklendi) {
+                Snackbar.make(it, "Ürün favorilere eklendi.", Snackbar.LENGTH_SHORT).show()
+            } else {
+                Snackbar.make(it, "Ürün zaten favorilerde.", Snackbar.LENGTH_SHORT).show()
+            }
         }
+
         holder.tasarim.textViewMarka.text = urun.urunMarka
         holder.tasarim.textViewMarkaDetay.text=urun.urunMarka
         holder.tasarim.textViewFiyat.text = "${urun.urunFiyat} TL"

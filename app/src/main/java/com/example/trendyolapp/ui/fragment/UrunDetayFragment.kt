@@ -1,4 +1,5 @@
 package com.example.trendyolapp.ui.fragment
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -29,8 +30,12 @@ class UrunDetayFragment : Fragment() {
         }
 
         binding.imageButton.setOnClickListener {
-            urunViewModel.urunEkle(urun)
-            Snackbar.make(it, "Ürün favorilere eklendi.", Snackbar.LENGTH_SHORT).show()
+            val eklendi = urunViewModel.urunEkle(urun)
+            if (eklendi) {
+                Snackbar.make(it, "Ürün favorilere eklendi.", Snackbar.LENGTH_SHORT).show()
+            } else {
+                Snackbar.make(it, "Ürün zaten favorilerde.", Snackbar.LENGTH_SHORT).show()
+            }
         }
 
         binding.buttonSepeteEkle.setOnClickListener {

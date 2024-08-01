@@ -36,13 +36,25 @@ class UrunViewModel : ViewModel() {
 
     fun urunSepeteEkle(urun: Urun) {
         val mevcutSepetUrunler = _sepetUrunler.value ?: mutableListOf()
-        mevcutSepetUrunler.add(urun)
+        val mevcutUrun = mevcutSepetUrunler.find { it.id == urun.id }
+        if (mevcutUrun != null) {
+            mevcutUrun.quantity += 1
+        } else {
+            urun.quantity = 1
+            mevcutSepetUrunler.add(urun)
+        }
         _sepetUrunler.value = mevcutSepetUrunler
     }
 
     fun urunSepettenKaldir(urun: Urun) {
         val mevcutSepetUrunler = _sepetUrunler.value ?: mutableListOf()
-        mevcutSepetUrunler.remove(urun)
+        mevcutSepetUrunler.find { it.id == urun.id }?.let {
+            if (it.quantity > 1) {
+                it.quantity -= 1
+            } else {
+                mevcutSepetUrunler.remove(it)
+            }
+        }
         _sepetUrunler.value = mevcutSepetUrunler
     }
 
@@ -63,10 +75,10 @@ class UrunViewModel : ViewModel() {
     }
 
     fun getSepetUrunSayisi(): Int {
-        return _sepetUrunler.value?.size ?: 0
+        return _sepetUrunler.value?.sumOf { it.quantity } ?: 0
     }
 
     fun getToplamFiyat(): Int {
-        return _sepetUrunler.value?.sumOf { it.urunFiyat } ?: 0
+        return _sepetUrunler.value?.sumOf { it.urunFiyat * it.quantity } ?: 0
     }
 }

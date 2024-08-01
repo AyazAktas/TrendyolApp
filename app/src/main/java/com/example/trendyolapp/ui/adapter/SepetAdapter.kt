@@ -31,9 +31,9 @@ class SepetAdapter(
     override fun onBindViewHolder(holder: CardTasarimTutucu, position: Int) {
         val urun = urunListesi[position]
         val u = holder.tasarim
+
         u.imageViewSepettenKaldir.setOnClickListener {
-            Snackbar.make(it,"${urun.urunMarka}'i sepetten kaldırmak istediğinize emin misiniz?",
-                Snackbar.LENGTH_SHORT)
+            Snackbar.make(it, "${urun.urunMarka}'i sepetten kaldırmak istediğinize emin misiniz?", Snackbar.LENGTH_SHORT)
                 .setAction("Evet") {
                     urunViewModel.urunSepettenKaldir(urun)
                 }.show()
@@ -49,15 +49,17 @@ class SepetAdapter(
         }
 
         holder.tasarim.textViewMarka.text = urun.urunMarka
-        holder.tasarim.textViewMarkaDetay.text=urun.urunMarka
-        holder.tasarim.textViewFiyat.text = "${urun.urunFiyat} TL"
-        holder.tasarim.textViewAciklama.text=urun.urunAciklama
+        holder.tasarim.textViewMarkaDetay.text = urun.urunMarka
+        holder.tasarim.textViewFiyat.text = "${urun.urunFiyat * urun.quantity} TL"
+        holder.tasarim.textViewAciklama.text = urun.urunAciklama
+        holder.tasarim.textViewAdet.text = "Adet: ${urun.quantity}"
+
         u.cardViewSepet.setOnClickListener {
             val gecis = SepetimFragmentDirections.sepetDetayGecis(urun = urun)
             Navigation.findNavController(it).navigate(gecis)
         }
-        holder.tasarim.imageView2.setImageResource(mContext.resources.getIdentifier(urun.urunResim, "drawable", mContext.packageName))
 
+        holder.tasarim.imageView2.setImageResource(mContext.resources.getIdentifier(urun.urunResim, "drawable", mContext.packageName))
     }
 
     fun updateUrunListesi(yeniUrunListesi: List<Urun>) {

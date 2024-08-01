@@ -55,10 +55,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="204dp"
+                android:layout_marginEnd="176dp"
                 android:text="Bugün Kargoda!"
                 android:textColor="#27D02E"
-                android:textSize="10sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewSatici" />
 

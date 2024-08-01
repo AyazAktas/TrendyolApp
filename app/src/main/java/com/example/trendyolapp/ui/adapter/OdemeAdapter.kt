@@ -28,6 +28,7 @@ class OdemeAdapter(private val mContext: Context, private var urunListesi: List<
         u.textViewFiyat.text="${urun.urunFiyat} TL"
         u.textViewAciklama.text=urun.urunAciklama
         u.saticiAdi.text=urun.urunMarka
+
     }
     fun setUrunler(urunler: List<Urun>) {
         urunListesi = urunler

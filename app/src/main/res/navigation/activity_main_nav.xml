@@ -110,5 +110,17 @@
         <argument
             android:name="urun"
             app:argType="com.example.trendyolapp.data.entity.Urun" />
+        <action
+            android:id="@+id/siparis_onaylandi"
+            app:destination="@id/siparisOnaylandiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/siparisOnaylandiFragment"
+        android:name="com.example.trendyolapp.ui.fragment.SiparisOnaylandiFragment"
+        android:label="fragment_siparis_onaylandi"
+        tools:layout="@layout/fragment_siparis_onaylandi" >
+        <action
+            android:id="@+id/action_siparisOnaylandiFragment_to_anasayfaFragment"
+            app:destination="@id/anasayfaFragment" />
     </fragment>
 </navigation>

@@ -23,7 +23,7 @@ class SiparisOnaylandiFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentSiparisOnaylandiBinding.inflate(inflater, container, false)
 
-        odemeAdapter = OdemeAdapter(requireContext(), listOf(), urunViewModel)
+        odemeAdapter = OdemeAdapter(requireContext(), listOf(), urunViewModel,"SiparisOnaylandi")
         binding.siparisrv.layoutManager = LinearLayoutManager(requireContext())
         binding.siparisrv.adapter = odemeAdapter
 
@@ -35,7 +35,6 @@ class SiparisOnaylandiFragment : Fragment() {
         urunViewModel.siparisUrunler.observe(viewLifecycleOwner, { urunler ->
             odemeAdapter.setUrunler(urunler)
         })
-
         return binding.root
     }
 

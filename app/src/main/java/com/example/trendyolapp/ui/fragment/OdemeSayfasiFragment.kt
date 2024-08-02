@@ -24,12 +24,11 @@ class OdemeSayfasiFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentOdemeSayfasiBinding.inflate(inflater, container, false)
 
-        odemeAdapter = OdemeAdapter(requireContext(), arrayListOf(), urunViewModel)
+        odemeAdapter = OdemeAdapter(requireContext(), arrayListOf(), urunViewModel,"OdemeSayfasi")
         binding.alinanurunlerrv.layoutManager = LinearLayoutManager(requireContext())
         binding.alinanurunlerrv.adapter = odemeAdapter
 
-        urunViewModel.siparisUrunler.observe(viewLifecycleOwner, { urunler ->
-            odemeAdapter.setUrunler(urunler)
+        urunViewModel.siparisUrunler.observe(viewLifecycleOwner, { urunler -> odemeAdapter.setUrunler(urunler)
             updateTotalPrice(urunler)
             val totalPrice = urunler.sumOf { it.urunFiyat.toDouble() }
             binding.textViewUrunFiyat2.text = "${totalPrice} TL"

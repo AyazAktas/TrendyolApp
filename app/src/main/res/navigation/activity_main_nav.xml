@@ -113,6 +113,9 @@
         <action
             android:id="@+id/siparis_onaylandi"
             app:destination="@id/siparisOnaylandiFragment" />
+        <action
+            android:id="@+id/action_odemeSayfasiFragment_to_urunDetayFragment"
+            app:destination="@id/urunDetayFragment" />
     </fragment>
     <fragment
         android:id="@+id/siparisOnaylandiFragment"
@@ -122,5 +125,8 @@
         <action
             android:id="@+id/action_siparisOnaylandiFragment_to_anasayfaFragment"
             app:destination="@id/anasayfaFragment" />
+        <action
+            android:id="@+id/action_siparisOnaylandiFragment_to_urunDetayFragment"
+            app:destination="@id/urunDetayFragment" />
     </fragment>
 </navigation>

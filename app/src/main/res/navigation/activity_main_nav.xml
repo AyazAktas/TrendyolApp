@@ -60,6 +60,13 @@
         <action
             android:id="@+id/sepet_detay_gecis"
             app:destination="@id/urunDetayFragment" />
+        <action
+            android:id="@+id/sepetOnaylaGecis"
+            app:destination="@id/odemeSayfasiFragment">
+            <argument
+                android:name="urun"
+                app:argType="com.example.trendyolapp.data.entity.Urun" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/trendyolGoFragment"

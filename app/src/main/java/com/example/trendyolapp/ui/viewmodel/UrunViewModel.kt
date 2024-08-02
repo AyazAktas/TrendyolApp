@@ -34,6 +34,7 @@ class UrunViewModel : ViewModel() {
         }
     }
 
+
     fun urunSepeteEkle(urun: Urun) {
         val mevcutSepetUrunler = _sepetUrunler.value ?: mutableListOf()
         val mevcutUrun = mevcutSepetUrunler.find { it.id == urun.id }

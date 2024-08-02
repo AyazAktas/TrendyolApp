@@ -59,6 +59,7 @@ class SepetAdapter(
             Navigation.findNavController(it).navigate(gecis)
         }
 
+
         holder.tasarim.imageView2.setImageResource(mContext.resources.getIdentifier(urun.urunResim, "drawable", mContext.packageName))
     }
 

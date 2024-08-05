@@ -44,6 +44,11 @@ class AnasayfaFragment : Fragment() {
             bundle.putSerializable("urunListesi", ArrayList(urunlistesi))  // Yeni bir ArrayList oluşturun
             Navigation.findNavController(it).navigate(R.id.tum_urunler_gecis, bundle)
         }
+        binding.buttonKategoriler.setOnClickListener {
+            val bundle=Bundle()
+            bundle.putSerializable("butonlarListesi",ArrayList(butonlarListesi))
+            Navigation.findNavController(it).navigate(R.id.kategoriler_gecis,bundle)
+        }
 
         return binding.root
     }

@@ -28,6 +28,9 @@
         <action
             android:id="@+id/tum_urunler_gecis"
             app:destination="@id/tumUrunlerFragment2" />
+        <action
+            android:id="@+id/kategoriler_gecis"
+            app:destination="@id/kategorilerFragment" />
     </fragment>
     <fragment
         android:id="@+id/hesabimFragment"
@@ -128,5 +131,17 @@
         <action
             android:id="@+id/action_siparisOnaylandiFragment_to_urunDetayFragment"
             app:destination="@id/urunDetayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kategorilerFragment"
+        android:name="com.example.trendyolapp.ui.fragment.KategorilerFragment"
+        android:label="fragment_kategoriler"
+        tools:layout="@layout/fragment_kategoriler" >
+        <argument
+            android:name="buton"
+            app:argType="com.example.trendyolapp.data.entity.Butonlar" />
+        <action
+            android:id="@+id/action_kategorilerFragment_to_anasayfaFragment"
+            app:destination="@id/anasayfaFragment" />
     </fragment>
 </navigation>

@@ -7,7 +7,7 @@
     tools:context=".ui.fragment.FavorilerimFragment" >
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonKategoriler"
         android:layout_width="wrap_content"
         android:layout_height="42dp"
         android:layout_marginStart="276dp"

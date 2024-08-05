@@ -24,7 +24,7 @@ class OdemeSayfasiFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentOdemeSayfasiBinding.inflate(inflater, container, false)
 
-        odemeAdapter = OdemeAdapter(requireContext(), arrayListOf(), urunViewModel,"OdemeSayfasi")
+        odemeAdapter = OdemeAdapter(requireContext(), arrayListOf(), urunViewModel, "OdemeSayfasi")
         binding.alinanurunlerrv.layoutManager = LinearLayoutManager(requireContext())
         binding.alinanurunlerrv.adapter = odemeAdapter
 
@@ -40,7 +40,6 @@ class OdemeSayfasiFragment : Fragment() {
                 findNavController().navigate(gecis)
             }
         }
-
         return binding.root
     }
 
@@ -57,14 +56,13 @@ class OdemeSayfasiFragment : Fragment() {
 
         return when {
             adres.isEmpty() -> {
-            showSnackbar("Adres girmediniz.")
-            false
+                showSnackbar("Adres girmediniz.")
+                false
             }
             cardNumber.isEmpty() -> {
                 showSnackbar("Kart numarası girmediniz.")
                 false
             }
-
             expiryDate.isEmpty() -> {
                 showSnackbar("Son kullanma tarihini girmediniz.")
                 false

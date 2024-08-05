@@ -143,5 +143,8 @@
         <action
             android:id="@+id/action_kategorilerFragment_to_anasayfaFragment"
             app:destination="@id/anasayfaFragment" />
+        <argument
+            android:name="kategori"
+            app:argType="com.example.trendyolapp.data.entity.Kategori" />
     </fragment>
 </navigation>

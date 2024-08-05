@@ -51,6 +51,14 @@
                     android:src="@drawable/baseline_arrow_back_24"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="266dp"
+                    android:layout_height="46dp"
+                    android:text="Button"
+                    tools:layout_editor_absoluteX="137dp"
+                    tools:layout_editor_absoluteY="52dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

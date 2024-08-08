@@ -25,12 +25,18 @@ class SepetimFragment : Fragment() {
         sepetimadapter = SepetAdapter(requireContext(), arrayListOf(), urunViewModel)
         binding.sepetimrv.layoutManager = LinearLayoutManager(requireContext())
         binding.sepetimrv.adapter = sepetimadapter
-        binding.textViewUrunSayisi.text = "(${urunViewModel.getSepetUrunSayisi()} ürün)"
+        binding.textViewUrunSayisi.text = "(${urunViewModel.getToplamSepetUrunSayisi()} ürün)"
         urunViewModel.sepetUrunler.observe(viewLifecycleOwner) { urunler ->
             sepetimadapter.updateUrunListesi(urunler)
         }
         binding.textViewToplamFiyat.text = "${urunViewModel.getToplamFiyat()} TL"
+        binding.butonSepetiOnayla.setOnClickListener {
+            urunViewModel.sepetiOnayla()
+            findNavController().navigate(R.id.sepetOnaylaGecis)
+        }
+
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

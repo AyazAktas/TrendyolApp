@@ -1,15 +1,20 @@
 package com.example.trendyolapp.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import java.text.SimpleDateFormat
+import java.util.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.trendyolapp.R
+import com.example.trendyolapp.data.entity.Order
 import com.example.trendyolapp.data.entity.Urun
+import com.example.trendyolapp.data.provider.OrderRepository
 import com.example.trendyolapp.databinding.FragmentOdemeSayfasiBinding
 import com.example.trendyolapp.ui.adapter.OdemeAdapter
 import com.example.trendyolapp.ui.viewmodel.UrunViewModel
@@ -28,7 +33,8 @@ class OdemeSayfasiFragment : Fragment() {
         binding.alinanurunlerrv.layoutManager = LinearLayoutManager(requireContext())
         binding.alinanurunlerrv.adapter = odemeAdapter
 
-        urunViewModel.siparisUrunler.observe(viewLifecycleOwner, { urunler -> odemeAdapter.setUrunler(urunler)
+        urunViewModel.siparisUrunler.observe(viewLifecycleOwner, { urunler ->
+            odemeAdapter.setUrunler(urunler)
             updateTotalPrice(urunler)
             val totalPrice = urunler.sumOf { it.urunFiyat.toDouble() }
             binding.textViewUrunFiyat2.text = "${totalPrice} TL"
@@ -36,10 +42,23 @@ class OdemeSayfasiFragment : Fragment() {
 
         binding.buttonOnayla.setOnClickListener {
             if (validateInputs()) {
+                val (date, time) = getCurrentDateTime()
+                val orderCode = generateOrderCode()
+                val order = Order(
+                    orderCode = orderCode,
+                    date = date,
+                    time = time,
+                    products = urunViewModel.siparisUrunler.value ?: emptyList()
+                )
+                OrderRepository.addOrder(order)
+
+                Log.d("OdemeSayfasiFragment", "Sipariş Oluşturuldu: $order")
+
                 val gecis = OdemeSayfasiFragmentDirections.siparisOnaylandi()
                 findNavController().navigate(gecis)
             }
         }
+
         return binding.root
     }
 
@@ -77,6 +96,17 @@ class OdemeSayfasiFragment : Fragment() {
 
     private fun showSnackbar(message: String) {
         Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    private fun generateOrderCode(): String {
+        return UUID.randomUUID().toString()
+    }
+
+    private fun getCurrentDateTime(): Pair<String, String> {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val timeFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+        val currentDate = Date()
+        return Pair(dateFormat.format(currentDate), timeFormat.format(currentDate))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

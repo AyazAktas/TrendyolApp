@@ -41,13 +41,11 @@ class SepetimFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationBar)
-        bottomNavigationView.visibility = View.GONE
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationBar)
-        bottomNavigationView.visibility = View.VISIBLE
+
     }
 }

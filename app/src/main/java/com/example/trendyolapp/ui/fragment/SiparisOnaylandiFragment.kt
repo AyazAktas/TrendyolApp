@@ -37,18 +37,4 @@ class SiparisOnaylandiFragment : Fragment() {
         })
         return binding.root
     }
-
-    override fun onResume() {
-        super.onResume()
-        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationBar)
-        bottomNavigationView?.visibility = View.GONE
-        Log.d("SiparisOnaylandiFragment", "BottomNavigationView hidden onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationBar)
-        bottomNavigationView?.visibility = View.VISIBLE
-        Log.d("SiparisOnaylandiFragment", "BottomNavigationView shown onPause")
-    }
 }

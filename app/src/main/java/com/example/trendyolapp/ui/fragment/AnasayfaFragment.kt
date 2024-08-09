@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import androidx.fragment.app.FragmentManager
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +25,7 @@ import com.example.trendyolapp.ui.adapter.KuponAdapter
 import com.example.trendyolapp.ui.adapter.ReklamAdapter
 import com.example.trendyolapp.ui.adapter.HizmetAdapter
 import com.example.trendyolapp.ui.adapter.UrunAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class AnasayfaFragment : Fragment() {
     private lateinit var binding: FragmentAnasayfaBinding
@@ -39,6 +41,8 @@ class AnasayfaFragment : Fragment() {
 
         setupRecyclerViews(urunlistesi, butonlarListesi, kuponlarListesi, reklamlarListesi, hizmetListesi)
 
+
+
         binding.textViewTumUrunler.setOnClickListener {
             val bundle = Bundle()
             bundle.putSerializable("urunListesi", ArrayList(urunlistesi))  // Yeni bir ArrayList oluşturun
@@ -49,8 +53,8 @@ class AnasayfaFragment : Fragment() {
             bundle.putSerializable("butonlarListesi",ArrayList(butonlarListesi))
             Navigation.findNavController(it).navigate(R.id.kategoriler_gecis,bundle)
         }
-
         return binding.root
+
     }
 
     private fun setupRecyclerViews(

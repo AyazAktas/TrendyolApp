@@ -1,6 +1,7 @@
 package com.example.trendyolapp
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,10 +12,12 @@ import com.example.trendyolapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         enableEdgeToEdge()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -23,6 +26,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         val navHostFragment1 = supportFragmentManager.findFragmentById(R.id.navHostFragment1) as NavHostFragment
-        NavigationUI.setupWithNavController(binding.bottomNavigationBar,navHostFragment1.navController)
+        val navController = navHostFragment1.navController
+
+        NavigationUI.setupWithNavController(binding.bottomNavigationBar, navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.siparisOnaylandiFragment, R.id.sepetimFragment, R.id.odemeSayfasiFragment -> binding.bottomNavigationBar.visibility = View.GONE
+                else -> binding.bottomNavigationBar.visibility = View.VISIBLE
+            }
+        }
     }
 }

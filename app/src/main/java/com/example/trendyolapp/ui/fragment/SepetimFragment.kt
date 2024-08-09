@@ -13,6 +13,7 @@ import com.example.trendyolapp.databinding.FragmentSepetimBinding
 import com.example.trendyolapp.ui.adapter.SepetAdapter
 import com.example.trendyolapp.ui.viewmodel.UrunViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 
 
 class SepetimFragment : Fragment() {
@@ -31,8 +32,15 @@ class SepetimFragment : Fragment() {
         }
         binding.textViewToplamFiyat.text = "${urunViewModel.getToplamFiyat()} TL"
         binding.butonSepetiOnayla.setOnClickListener {
-            urunViewModel.sepetiOnayla()
-            findNavController().navigate(R.id.sepetOnaylaGecis)
+            val sepetUrunler=urunViewModel.sepetUrunler.value
+            if (sepetUrunler.isNullOrEmpty())
+            {
+                Snackbar.make(binding.root,"Sepetinizde ürün bulunmamaktadır. Ürün ekleyiniz!",Snackbar.LENGTH_SHORT).show()
+            }
+            else{
+                urunViewModel.sepetiOnayla()
+                findNavController().navigate(R.id.sepetOnaylaGecis)
+            }
         }
 
         return binding.root

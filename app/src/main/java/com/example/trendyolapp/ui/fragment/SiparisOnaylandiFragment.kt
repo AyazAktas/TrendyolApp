@@ -32,6 +32,14 @@ class SiparisOnaylandiFragment : Fragment() {
             findNavController().navigate(gecis)
         }
 
+        binding.ButtonSiparislereGit.setOnClickListener {
+            val gecis=SiparisOnaylandiFragmentDirections.actionSiparisOnaylandiFragmentToSiparislerimFragment()
+            findNavController().navigate(gecis)
+        }
+        binding.siparislerimegittv.setOnClickListener {
+            val gecis=SiparisOnaylandiFragmentDirections.actionSiparisOnaylandiFragmentToSiparislerimFragment()
+            findNavController().navigate(gecis)
+        }
         urunViewModel.siparisUrunler.observe(viewLifecycleOwner, { urunler ->
             odemeAdapter.setUrunler(urunler)
         })

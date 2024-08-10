@@ -36,7 +36,11 @@
         android:id="@+id/hesabimFragment"
         android:name="com.example.trendyolapp.ui.fragment.HesabimFragment"
         android:label="fragment_hesabim"
-        tools:layout="@layout/fragment_hesabim" />
+        tools:layout="@layout/fragment_hesabim" >
+        <action
+            android:id="@+id/action_hesabimFragment_to_siparislerimFragment"
+            app:destination="@id/siparislerimFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favorilerimFragment"
         android:name="com.example.trendyolapp.ui.fragment.FavorilerimFragment"
@@ -119,6 +123,9 @@
         <action
             android:id="@+id/action_odemeSayfasiFragment_to_urunDetayFragment"
             app:destination="@id/urunDetayFragment" />
+        <action
+            android:id="@+id/action_odemeSayfasiFragment_to_siparislerimFragment"
+            app:destination="@id/siparislerimFragment" />
     </fragment>
     <fragment
         android:id="@+id/siparisOnaylandiFragment"
@@ -131,6 +138,9 @@
         <action
             android:id="@+id/action_siparisOnaylandiFragment_to_urunDetayFragment"
             app:destination="@id/urunDetayFragment" />
+        <action
+            android:id="@+id/action_siparisOnaylandiFragment_to_siparislerimFragment"
+            app:destination="@id/siparislerimFragment" />
     </fragment>
     <fragment
         android:id="@+id/kategorilerFragment"
@@ -147,4 +157,9 @@
             android:name="kategori"
             app:argType="com.example.trendyolapp.data.entity.Kategori" />
     </fragment>
+    <fragment
+        android:id="@+id/siparislerimFragment"
+        android:name="com.example.trendyolapp.ui.fragment.SiparislerimFragment"
+        android:label="fragment_siparislerim"
+        tools:layout="@layout/fragment_siparislerim" />
 </navigation>

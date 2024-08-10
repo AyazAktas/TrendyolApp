@@ -11,14 +11,12 @@ import androidx.navigation.fragment.findNavController
 import java.text.SimpleDateFormat
 import java.util.*
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.trendyolapp.R
 import com.example.trendyolapp.data.entity.Order
 import com.example.trendyolapp.data.entity.Urun
 import com.example.trendyolapp.data.provider.OrderRepository
 import com.example.trendyolapp.databinding.FragmentOdemeSayfasiBinding
 import com.example.trendyolapp.ui.adapter.OdemeAdapter
 import com.example.trendyolapp.ui.viewmodel.UrunViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 
 class OdemeSayfasiFragment : Fragment() {
@@ -44,12 +42,17 @@ class OdemeSayfasiFragment : Fragment() {
             if (validateInputs()) {
                 val (date, time) = getCurrentDateTime()
                 val orderCode = generateOrderCode()
+                val urunler = urunViewModel.siparisUrunler.value ?: emptyList()
+                val totalPrice = urunler.sumOf { it.urunFiyat.toDouble() } // Toplam fiyat hesaplama
+
                 val order = Order(
                     orderCode = orderCode,
                     date = date,
                     time = time,
-                    products = urunViewModel.siparisUrunler.value ?: emptyList()
+                    products = urunler,
+                    totalPrice = totalPrice // Toplam fiyatı ekleyin
                 )
+
                 OrderRepository.addOrder(order)
 
                 Log.d("OdemeSayfasiFragment", "Sipariş Oluşturuldu: $order")
@@ -58,6 +61,7 @@ class OdemeSayfasiFragment : Fragment() {
                 findNavController().navigate(gecis)
             }
         }
+
 
         return binding.root
     }

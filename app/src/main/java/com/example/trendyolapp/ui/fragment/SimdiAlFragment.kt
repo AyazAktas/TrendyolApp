@@ -8,44 +8,43 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import java.text.SimpleDateFormat
-import java.util.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.trendyolapp.data.entity.Order
 import com.example.trendyolapp.data.entity.Urun
 import com.example.trendyolapp.data.provider.OrderRepository
-import com.example.trendyolapp.databinding.FragmentOdemeSayfasiBinding
-import com.example.trendyolapp.ui.adapter.OdemeAdapter
+import com.example.trendyolapp.databinding.FragmentSimdiAlBinding
 import com.example.trendyolapp.ui.adapter.SimdiAlAdapter
 import com.example.trendyolapp.ui.viewmodel.UrunViewModel
 import com.google.android.material.snackbar.Snackbar
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import java.util.UUID
 
-class OdemeSayfasiFragment : Fragment() {
-    private lateinit var binding: FragmentOdemeSayfasiBinding
+class SimdiAlFragment : Fragment() {
+    private lateinit var binding: FragmentSimdiAlBinding
     private val urunViewModel: UrunViewModel by activityViewModels()
-    private lateinit var odemeAdapter: OdemeAdapter
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentOdemeSayfasiBinding.inflate(inflater, container, false)
+    private lateinit var simdiAlAdapter: SimdiAlAdapter
 
-        odemeAdapter = OdemeAdapter(requireContext(), arrayListOf(), urunViewModel, "OdemeSayfasi")
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentSimdiAlBinding.inflate(inflater, container, false)
+        simdiAlAdapter = SimdiAlAdapter(requireContext(), arrayListOf(), urunViewModel, "SimdiAl")
         binding.alinanurunlerrv.layoutManager = LinearLayoutManager(requireContext())
-        binding.alinanurunlerrv.adapter = odemeAdapter
+        binding.alinanurunlerrv.adapter = simdiAlAdapter
 
         urunViewModel.siparisUrunler.observe(viewLifecycleOwner, { urunler ->
-            odemeAdapter.setUrunler(urunler)
-            updateTotalPrice(urunler)
+            simdiAlAdapter.setUrunler(urunler)
             val totalPrice = urunler.sumOf { it.quantity * it.urunFiyat.toDouble() }
             binding.textViewUrunFiyat2.text = "${totalPrice} TL"
-            Log.d("OdemeSayfasiFragment", "Sipariş Ürünler: $urunler")
+            updateTotalPrice(urunler)
         })
-
 
         binding.buttonOnayla.setOnClickListener {
             if (validateInputs()) {
                 val (date, time) = getCurrentDateTime()
                 val orderCode = generateOrderCode()
                 val urunler = urunViewModel.siparisUrunler.value ?: emptyList()
-                val totalPrice = urunler.sumOf {it.quantity* it.urunFiyat.toDouble() } // Toplam fiyat hesaplama
+                val totalPrice = urunler.sumOf { it.quantity * it.urunFiyat.toDouble() }
 
                 val order = Order(
                     orderCode = orderCode,
@@ -57,19 +56,19 @@ class OdemeSayfasiFragment : Fragment() {
 
                 OrderRepository.addOrder(order)
 
-                Log.d("OdemeSayfasiFragment", "Sipariş Oluşturuldu: $order")
+                Log.d("SimdiAlFragment", "Sipariş Oluşturuldu: $order")
 
-                val gecis = OdemeSayfasiFragmentDirections.siparisOnaylandi()
+                val gecis = SimdiAlFragmentDirections.actionSimdiAlFragment2ToSiparisOnaylandiFragment()
                 findNavController().navigate(gecis)
             }
         }
-
 
         return binding.root
     }
 
     private fun updateTotalPrice(urunler: List<Urun>) {
-        val totalPrice = urunler.sumOf { it.quantity*it.urunFiyat }
+        val totalPrice = urunler.sumOf { it.quantity * it.urunFiyat.toDouble() }
+        Log.d("SimdiAlFragment", "Toplam Fiyat: $totalPrice TL")
         binding.textViewUrunFiyat.text = "${totalPrice} TL"
     }
 
@@ -113,15 +112,5 @@ class OdemeSayfasiFragment : Fragment() {
         val timeFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
         val currentDate = Date()
         return Pair(dateFormat.format(currentDate), timeFormat.format(currentDate))
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-
     }
 }

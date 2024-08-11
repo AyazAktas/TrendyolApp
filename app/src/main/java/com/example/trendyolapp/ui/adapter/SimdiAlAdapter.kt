@@ -1,25 +1,23 @@
 package com.example.trendyolapp.ui.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trendyolapp.data.entity.Urun
 import com.example.trendyolapp.databinding.CardViewOdemeBinding
-import com.example.trendyolapp.ui.fragment.AnasayfaFragmentDirections
-import com.example.trendyolapp.ui.fragment.FavorilerimFragmentDirections
 import com.example.trendyolapp.ui.fragment.OdemeSayfasiFragmentDirections
 import com.example.trendyolapp.ui.fragment.SiparisOnaylandiFragmentDirections
-import com.example.trendyolapp.ui.fragment.TumUrunlerFragmentDirections
 import com.example.trendyolapp.ui.viewmodel.UrunViewModel
 
-class OdemeAdapter(
+class SimdiAlAdapter(
     private val mContext: Context,
     private var urunListesi: List<Urun>,
     private val urunViewModel: UrunViewModel,
     private val fromFragment: String
-) : RecyclerView.Adapter<OdemeAdapter.CardViewTutucu>() {
+) : RecyclerView.Adapter<SimdiAlAdapter.CardViewTutucu>() {
 
     inner class CardViewTutucu(val tasarim: CardViewOdemeBinding) : RecyclerView.ViewHolder(tasarim.root)
 
@@ -39,6 +37,7 @@ class OdemeAdapter(
         u.textViewMarka.text = urun.urunMarka
         u.textViewFiyat.text = "${urun.urunFiyat} TL"
         u.textViewAciklama.text = urun.urunAciklama
+        Log.d("SimdiAlAdapter", "Ürün Bağlandı: ${urun.urunMarka} - ${urun.urunFiyat}")
         u.saticiAdi.text = urun.urunMarka
         u.odemeuruncv.setOnClickListener {
             val navController = Navigation.findNavController(it)
@@ -54,21 +53,8 @@ class OdemeAdapter(
     }
 
     fun setUrunler(urunler: List<Urun>) {
-        urunListesi = getFlattenedProductList(urunler)
+        urunListesi = urunler
         notifyDataSetChanged()
-    }
 
-    private fun getFlattenedProductList(originalList: List<Urun>): List<Urun> {
-        val flattenedList = mutableListOf<Urun>()
-        if(urunListesi.size==1)
-        {
-            urunListesi=originalList
-        }
-        for (urun in originalList) {
-            repeat(urun.quantity) {
-                flattenedList.add(urun)
-            }
-        }
-        return flattenedList
     }
 }

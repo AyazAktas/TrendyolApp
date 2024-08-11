@@ -100,6 +100,12 @@
         <action
             android:id="@+id/odeme_gecis"
             app:destination="@id/odemeSayfasiFragment" />
+        <action
+            android:id="@+id/action_urunDetayFragment_to_simdiAlFragment2"
+            app:destination="@id/simdiAlFragment2" />
+        <action
+            android:id="@+id/action_urunDetayFragment_to_simdiAlFragment22"
+            app:destination="@id/simdiAlFragment2" />
     </fragment>
     <fragment
         android:id="@+id/tumUrunlerFragment2"
@@ -162,4 +168,15 @@
         android:name="com.example.trendyolapp.ui.fragment.SiparislerimFragment"
         android:label="fragment_siparislerim"
         tools:layout="@layout/fragment_siparislerim" />
+    <fragment
+        android:id="@+id/simdiAlFragment2"
+        android:name="com.example.trendyolapp.ui.fragment.SimdiAlFragment"
+        android:label="SimdiAlFragment" >
+        <action
+            android:id="@+id/action_simdiAlFragment2_to_siparisOnaylandiFragment"
+            app:destination="@id/siparisOnaylandiFragment" />
+        <argument
+            android:name="urun"
+            app:argType="com.example.trendyolapp.data.entity.Urun" />
+    </fragment>
 </navigation>

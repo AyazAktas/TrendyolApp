@@ -27,7 +27,8 @@ class SiparisAdapter(private val mContext: Context, private val siparisler: List
         s.textViewFiyat.text = "${siparis.totalPrice.toString()} TL"
         s.textViewSaat.text = siparis.time
         s.textViewTarih.text = siparis.date
-        s.textViewUrunAdet.text = "${siparis.products.size} adet ürün sipariş edildi."
+        val totalProductQuantity = siparis.products.sumOf { it.quantity }
+        s.textViewUrunAdet.text = "${totalProductQuantity} adet ürün sipariş edildi."
         s.textViewOrderCode.text = siparis.orderCode
 
         val urunAdapter = UrunAdapter(mContext, siparis.products, "Siparis")

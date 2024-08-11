@@ -31,7 +31,7 @@ class UrunViewModel : ViewModel() {
     }
 
     fun urunSepettenKaldir(urun: Urun) {
-        urunKaldir(_sepetUrunler, urun)
+        urunSepettenKaldir(_sepetUrunler, urun)
     }
 
     fun urunSipariseEkle(urun: Urun) {
@@ -58,7 +58,6 @@ class UrunViewModel : ViewModel() {
     fun sepetOnayDurumunuSifirla() {
         _sepetOnaylandi.value = false
     }
-
 
     private fun urunEkle(liveData: MutableLiveData<MutableList<Urun>>, urun: Urun): Boolean {
         val mevcutUrunler = liveData.value ?: mutableListOf()
@@ -87,5 +86,18 @@ class UrunViewModel : ViewModel() {
             mevcutUrunler.add(urun)
         }
         liveData.value = mevcutUrunler
+    }
+
+    private fun urunSepettenKaldir(liveData: MutableLiveData<MutableList<Urun>>, urun: Urun) {
+        val mevcutUrunler = liveData.value ?: mutableListOf()
+        val mevcutUrun = mevcutUrunler.find { it.id == urun.id }
+        if (mevcutUrun != null) {
+            if (mevcutUrun.quantity > 1) {
+                mevcutUrun.quantity -= 1
+            } else {
+                mevcutUrunler.remove(mevcutUrun)
+            }
+            liveData.value = mevcutUrunler
+        }
     }
 }

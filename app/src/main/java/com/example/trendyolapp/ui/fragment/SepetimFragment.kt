@@ -12,48 +12,48 @@ import com.example.trendyolapp.R
 import com.example.trendyolapp.databinding.FragmentSepetimBinding
 import com.example.trendyolapp.ui.adapter.SepetAdapter
 import com.example.trendyolapp.ui.viewmodel.UrunViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
-
 
 class SepetimFragment : Fragment() {
     private lateinit var binding: FragmentSepetimBinding
     private val urunViewModel: UrunViewModel by activityViewModels()
-    private lateinit var sepetimadapter: SepetAdapter
+    private lateinit var sepetimAdapter: SepetAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentSepetimBinding.inflate(inflater, container, false)
-        sepetimadapter = SepetAdapter(requireContext(), arrayListOf(), urunViewModel)
-        binding.sepetimrv.layoutManager = LinearLayoutManager(requireContext())
-        binding.sepetimrv.adapter = sepetimadapter
-        binding.textViewUrunSayisi.text = "(${urunViewModel.getToplamSepetUrunSayisi()} ürün)"
-        urunViewModel.sepetUrunler.observe(viewLifecycleOwner) { urunler ->
-            sepetimadapter.updateUrunListesi(urunler)
-        }
-        binding.textViewToplamFiyat.text = "${urunViewModel.getToplamFiyat()} TL"
-        binding.butonSepetiOnayla.setOnClickListener {
-            val sepetUrunler=urunViewModel.sepetUrunler.value
-            if (sepetUrunler.isNullOrEmpty())
-            {
-                Snackbar.make(binding.root,"Sepetinizde ürün bulunmamaktadır. Ürün ekleyiniz!",Snackbar.LENGTH_SHORT).show()
-            }
-            else{
-                urunViewModel.sepetiOnayla()
-                findNavController().navigate(R.id.sepetOnaylaGecis)
-            }
-        }
-
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        sepetimAdapter = SepetAdapter(requireContext(), arrayListOf(), urunViewModel)
+        binding.sepetimrv.layoutManager = LinearLayoutManager(requireContext())
+        binding.sepetimrv.adapter = sepetimAdapter
+
+        urunViewModel.sepetUrunler.observe(viewLifecycleOwner) { urunler ->
+            sepetimAdapter.updateUrunListesi(urunler)
+            updateUI()
+        }
+
+        updateUI()
+
+        binding.butonSepetiOnayla.setOnClickListener {
+            val sepetUrunler = urunViewModel.sepetUrunler.value
+            if (sepetUrunler.isNullOrEmpty()) {
+                Snackbar.make(binding.root, "Sepetinizde ürün bulunmamaktadır. Ürün ekleyiniz!", Snackbar.LENGTH_SHORT).show()
+            } else {
+                urunViewModel.sepetiOnayla()
+                findNavController().navigate(R.id.sepetOnaylaGecis)
+            }
+        }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    private fun updateUI() {
+        val toplamFiyat = urunViewModel.getToplamFiyat()
+        val toplamAdet = urunViewModel.getToplamSepetUrunSayisi()
 
+        binding.textViewToplamFiyat.text = "${toplamFiyat} TL"
+        binding.textViewUrunSayisi.text = "($toplamAdet ürün)"
     }
 }

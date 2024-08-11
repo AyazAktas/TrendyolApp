@@ -34,7 +34,7 @@ class OdemeSayfasiFragment : Fragment() {
         urunViewModel.siparisUrunler.observe(viewLifecycleOwner, { urunler ->
             odemeAdapter.setUrunler(urunler)
             updateTotalPrice(urunler)
-            val totalPrice = urunler.sumOf { it.urunFiyat.toDouble() }
+            val totalPrice = urunler.sumOf { it.quantity*it.urunFiyat.toDouble() }
             binding.textViewUrunFiyat2.text = "${totalPrice} TL"
         })
 
@@ -43,14 +43,14 @@ class OdemeSayfasiFragment : Fragment() {
                 val (date, time) = getCurrentDateTime()
                 val orderCode = generateOrderCode()
                 val urunler = urunViewModel.siparisUrunler.value ?: emptyList()
-                val totalPrice = urunler.sumOf { it.urunFiyat.toDouble() } // Toplam fiyat hesaplama
+                val totalPrice = urunler.sumOf {it.quantity* it.urunFiyat.toDouble() } // Toplam fiyat hesaplama
 
                 val order = Order(
                     orderCode = orderCode,
                     date = date,
                     time = time,
                     products = urunler,
-                    totalPrice = totalPrice // Toplam fiyatı ekleyin
+                    totalPrice = totalPrice
                 )
 
                 OrderRepository.addOrder(order)
@@ -67,7 +67,7 @@ class OdemeSayfasiFragment : Fragment() {
     }
 
     private fun updateTotalPrice(urunler: List<Urun>) {
-        val totalPrice = urunler.sumOf { it.urunFiyat }
+        val totalPrice = urunler.sumOf { it.quantity*it.urunFiyat }
         binding.textViewUrunFiyat.text = "${totalPrice} TL"
     }
 

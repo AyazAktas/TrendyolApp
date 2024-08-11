@@ -14,11 +14,17 @@ import com.example.trendyolapp.ui.fragment.SiparisOnaylandiFragmentDirections
 import com.example.trendyolapp.ui.fragment.TumUrunlerFragmentDirections
 import com.example.trendyolapp.ui.viewmodel.UrunViewModel
 
-class OdemeAdapter(private val mContext: Context, private var urunListesi: List<Urun>, private val urunViewModel: UrunViewModel,private val fromFragment: String):RecyclerView.Adapter<OdemeAdapter.CardViewTutucu>(){
-    inner class CardViewTutucu(val tasarim:CardViewOdemeBinding):RecyclerView.ViewHolder(tasarim.root)
+class OdemeAdapter(
+    private val mContext: Context,
+    private var urunListesi: List<Urun>,
+    private val urunViewModel: UrunViewModel,
+    private val fromFragment: String
+) : RecyclerView.Adapter<OdemeAdapter.CardViewTutucu>() {
+
+    inner class CardViewTutucu(val tasarim: CardViewOdemeBinding) : RecyclerView.ViewHolder(tasarim.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewTutucu {
-        val binding=CardViewOdemeBinding.inflate(LayoutInflater.from(mContext),parent,false)
+        val binding = CardViewOdemeBinding.inflate(LayoutInflater.from(mContext), parent, false)
         return CardViewTutucu(binding)
     }
 
@@ -27,13 +33,13 @@ class OdemeAdapter(private val mContext: Context, private var urunListesi: List<
     }
 
     override fun onBindViewHolder(holder: CardViewTutucu, position: Int) {
-        val urun=urunListesi[position]
-        val u =holder.tasarim
+        val urun = urunListesi[position]
+        val u = holder.tasarim
         u.imageViewUrunResmi.setImageResource(mContext.resources.getIdentifier(urun.urunResim, "drawable", mContext.packageName))
-        u.textViewMarka.text=urun.urunMarka
-        u.textViewFiyat.text="${urun.urunFiyat} TL"
-        u.textViewAciklama.text=urun.urunAciklama
-        u.saticiAdi.text=urun.urunMarka
+        u.textViewMarka.text = urun.urunMarka
+        u.textViewFiyat.text = "${urun.urunFiyat} TL"
+        u.textViewAciklama.text = urun.urunAciklama
+        u.saticiAdi.text = urun.urunMarka
         u.odemeuruncv.setOnClickListener {
             val navController = Navigation.findNavController(it)
             val action = when (fromFragment) {
@@ -46,8 +52,19 @@ class OdemeAdapter(private val mContext: Context, private var urunListesi: List<
             }
         }
     }
+
     fun setUrunler(urunler: List<Urun>) {
-        urunListesi = urunler
+        urunListesi = getFlattenedProductList(urunler)
         notifyDataSetChanged()
+    }
+
+    private fun getFlattenedProductList(originalList: List<Urun>): List<Urun> {
+        val flattenedList = mutableListOf<Urun>()
+        for (urun in originalList) {
+            repeat(urun.quantity) {
+                flattenedList.add(urun)
+            }
+        }
+        return flattenedList
     }
 }

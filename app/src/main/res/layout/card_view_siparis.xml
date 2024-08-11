@@ -48,7 +48,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/urunlerRecyclerView" />
 
-            <!-- ImageView yerine RecyclerView ekliyoruz -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/urunlerRecyclerView"
                 android:layout_width="0dp"

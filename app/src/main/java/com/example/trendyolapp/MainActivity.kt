@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.siparisOnaylandiFragment, R.id.sepetimFragment, R.id.odemeSayfasiFragment -> binding.bottomNavigationBar.visibility = View.GONE
+                R.id.siparislerimFragment, R.id.siparisOnaylandiFragment, R.id.sepetimFragment, R.id.odemeSayfasiFragment -> binding.bottomNavigationBar.visibility = View.GONE
                 else -> binding.bottomNavigationBar.visibility = View.VISIBLE
             }
         }

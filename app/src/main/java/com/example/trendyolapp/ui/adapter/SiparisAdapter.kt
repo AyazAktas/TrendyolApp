@@ -25,10 +25,10 @@ class SiparisAdapter(private val mContext: Context,private val siparisler: List<
         s.textViewFiyat.text="${siparis.totalPrice.toString()} TL"
         s.textViewSaat.text=siparis.time
         s.textViewTarih.text=siparis.date
-        val imagePath = siparis.products[0].urunResim // Bu, resmin dosya yolu olmalı
-        val bitmap = BitmapFactory.decodeFile(imagePath)
+        val resourceId = mContext.resources.getIdentifier(siparis.products[0].urunResim, "drawable", mContext.packageName)
+        val bitmap = BitmapFactory.decodeResource(mContext.resources, resourceId)
         s.imageViewUrunResmi.setImageBitmap(bitmap)
-        s.textViewUrunAdet.text="${siparisler.size.toString()} adet ürün sipariş edildi."
+        s.textViewUrunAdet.text="${siparis.products.size.toString()} adet ürün sipariş edildi."
         s.textViewOrderCode.text=siparis.orderCode
     }
 }

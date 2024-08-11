@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -47,17 +46,19 @@
                 android:text="x ürün sipariş edildi"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewUrunResmi" />
+                app:layout_constraintTop_toBottomOf="@+id/urunlerRecyclerView" />
 
-            <ImageView
-                android:id="@+id/imageViewUrunResmi"
-                android:layout_width="76dp"
-                android:layout_height="112dp"
-                android:layout_marginStart="16dp"
+            <!-- ImageView yerine RecyclerView ekliyoruz -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/urunlerRecyclerView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewFiyat"
-                app:srcCompat="@drawable/diokitap" />
+                android:orientation="horizontal"
+                tools:listitem="@layout/item_product" />
 
             <TextView
                 android:id="@+id/textViewOrderCode"

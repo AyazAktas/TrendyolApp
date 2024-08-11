@@ -90,7 +90,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:text="Givenchy Gentleman Edp 100 ml Erkek Parfüm"
-            android:textColor="@color/material_dynamic_neutral50"
+            android:textColor="#6C6D6D"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewMarka" />
 
@@ -101,7 +101,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="11dp"
             android:text="Tahmini kargoya teslim:"
-            android:textColor="#747679"
+            android:textColor="#6C6D6D"
             app:layout_constraintStart_toEndOf="@+id/imageView4"
             app:layout_constraintTop_toBottomOf="@+id/textViewAciklama" />
 

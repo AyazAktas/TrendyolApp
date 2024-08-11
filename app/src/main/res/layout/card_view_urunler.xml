@@ -56,10 +56,9 @@
                 android:layout_width="149dp"
                 android:layout_height="34dp"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
                 android:text="urunaciklama"
                 android:textAlignment="viewStart"
-                android:textColor="@color/material_dynamic_neutral50"
+                android:textColor="#6C6D6D"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/urunMarka" />
 

@@ -59,6 +59,8 @@ class OdemeSayfasiFragment : Fragment() {
 
                 Log.d("OdemeSayfasiFragment", "Sipariş Oluşturuldu: $order")
 
+                urunViewModel.clearCart()
+
                 val gecis = OdemeSayfasiFragmentDirections.siparisOnaylandi()
                 findNavController().navigate(gecis)
             }

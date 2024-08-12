@@ -24,6 +24,11 @@ class UrunViewModel : ViewModel() {
         return urunEkle(_favoriUrunler, urun)
     }
 
+    fun clearCart() {
+        _sepetUrunler.value = mutableListOf()
+    }
+
+
     fun urunKaldir(urun: Urun) {
         urunKaldir(_favoriUrunler, urun)
     }

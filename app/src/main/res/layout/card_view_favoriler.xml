@@ -43,7 +43,7 @@
                 android:layout_height="29dp"
                 android:layout_marginTop="12dp"
                 android:text="Ürün Açıklaması"
-                android:textColor="@color/material_dynamic_neutral50"
+                android:textColor="#6C6D6D"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewMarka" />
@@ -64,7 +64,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="12dp"
                 android:text="Hızlı Teslimat"
-                android:textColor="@color/material_dynamic_neutral50"
+                android:textColor="#6C6D6D"
                 app:layout_constraintStart_toEndOf="@+id/imageView8"
                 app:layout_constraintTop_toBottomOf="@+id/textViewAciklama" />
 

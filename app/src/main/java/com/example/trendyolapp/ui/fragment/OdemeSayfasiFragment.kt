@@ -80,7 +80,7 @@ class OdemeSayfasiFragment : Fragment() {
         val adres = binding.editTextAdres.text.toString().trim()
         val expiryDate = binding.editTextSonKullanmaTarihi.text.toString().trim()
         val cvv = binding.editTextNumber2.text.toString().trim()
-
+        val expiryDateRegex = """^(0[1-9]|1[0-2])\/\d{2}$""".toRegex()
         return when {
             adres.isEmpty() -> {
                 showSnackbar("Adres girmediniz.")
@@ -90,12 +90,24 @@ class OdemeSayfasiFragment : Fragment() {
                 showSnackbar("Kart numarası girmediniz.")
                 false
             }
+            cardNumber.length != 16 -> {
+                showSnackbar("Lütfen geçerli bir kart numarası giriniz!")
+                false
+            }
             expiryDate.isEmpty() -> {
                 showSnackbar("Son kullanma tarihini girmediniz.")
                 false
             }
+            !expiryDateRegex.matches(expiryDate) -> {
+                showSnackbar("Son kullanma tarihi MM/YY formatında olmalıdır.")
+                false
+            }
             cvv.isEmpty() -> {
                 showSnackbar("CVV kodunu girmediniz.")
+                false
+            }
+            cvv.length!=3->{
+                showSnackbar("Lütfen geçerli CVV numarası giriniz !")
                 false
             }
             else -> true

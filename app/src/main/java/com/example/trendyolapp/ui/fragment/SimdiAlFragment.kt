@@ -86,6 +86,14 @@ class SimdiAlFragment : Fragment() {
                 showSnackbar("Adres girmediniz.")
                 false
             }
+            adres.length < 10 -> {
+                showSnackbar("Adres en az 10 karakter uzunluğunda olmalıdır.")
+                false
+            }
+            adres.length > 100 -> {
+                showSnackbar("Adres en fazla 100 karakter uzunluğunda olmalıdır.")
+                false
+            }
             cardNumber.isEmpty() -> {
                 showSnackbar("Kart numarası girmediniz.")
                 false

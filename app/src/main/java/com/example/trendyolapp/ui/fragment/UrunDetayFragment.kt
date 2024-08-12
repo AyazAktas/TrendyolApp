@@ -47,7 +47,6 @@ class UrunDetayFragment : Fragment() {
 
         binding.buttonSimdiAl.setOnClickListener {
             urunViewModel.urunSipariseEkle(urun)
-            urunViewModel.urunEkle(urun)
             Log.d("UrunDetayFragment", "Sipariş Ürünler: ${urunViewModel.siparisUrunler.value}")
             val action = UrunDetayFragmentDirections.actionUrunDetayFragmentToSimdiAlFragment2(urun)
             findNavController().navigate(action)

@@ -32,11 +32,12 @@ class SimdiAlFragment : Fragment() {
         binding.alinanurunlerrv.layoutManager = LinearLayoutManager(requireContext())
         binding.alinanurunlerrv.adapter = simdiAlAdapter
 
-        urunViewModel.siparisUrunler.observe(viewLifecycleOwner, { urunler ->
-            simdiAlAdapter.setUrunler(urunler)
-            val totalPrice = urunler.sumOf { it.quantity * it.urunFiyat.toDouble() }
+        urunViewModel.siparisUrunler.observe(viewLifecycleOwner, { urun ->
+            simdiAlAdapter.setUrunler(urun)
+            Log.d("Urunler","${urun}")
+            val totalPrice = urun.sumOf {it.urunFiyat}
             binding.textViewUrunFiyat2.text = "${totalPrice} TL"
-            updateTotalPrice(urunler)
+            updateTotalPrice(urun)
         })
 
         binding.buttonOnayla.setOnClickListener {
@@ -44,14 +45,14 @@ class SimdiAlFragment : Fragment() {
                 val (date, time) = getCurrentDateTime()
                 val orderCode = generateOrderCode()
                 val urunler = urunViewModel.siparisUrunler.value ?: emptyList()
-                val totalPrice = urunler.sumOf { it.quantity * it.urunFiyat.toDouble() }
+                val totalPrice = urunler.sumOf { it.urunFiyat }
 
                 val order = Order(
                     orderCode = orderCode,
                     date = date,
                     time = time,
                     products = urunler,
-                    totalPrice = totalPrice
+                    totalPrice = totalPrice.toDouble()
                 )
 
                 OrderRepository.addOrder(order)
@@ -67,7 +68,7 @@ class SimdiAlFragment : Fragment() {
     }
 
     private fun updateTotalPrice(urunler: List<Urun>) {
-        val totalPrice = urunler.sumOf { it.quantity * it.urunFiyat.toDouble() }
+        val totalPrice = urunler.sumOf {it.urunFiyat}
         Log.d("SimdiAlFragment", "Toplam Fiyat: $totalPrice TL")
         binding.textViewUrunFiyat.text = "${totalPrice} TL"
     }

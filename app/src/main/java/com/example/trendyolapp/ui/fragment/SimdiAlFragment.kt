@@ -31,6 +31,7 @@ class SimdiAlFragment : Fragment() {
         simdiAlAdapter = SimdiAlAdapter(requireContext(), arrayListOf(), urunViewModel, "SimdiAl")
         binding.alinanurunlerrv.layoutManager = LinearLayoutManager(requireContext())
         binding.alinanurunlerrv.adapter = simdiAlAdapter
+        urunViewModel.isFromSimdiAlFragment = true
 
         urunViewModel.siparisUrunler.observe(viewLifecycleOwner, { urun ->
             simdiAlAdapter.setUrunler(urun)
@@ -61,6 +62,7 @@ class SimdiAlFragment : Fragment() {
 
                 val gecis = SimdiAlFragmentDirections.actionSimdiAlFragment2ToSiparisOnaylandiFragment()
                 findNavController().navigate(gecis)
+
             }
         }
 

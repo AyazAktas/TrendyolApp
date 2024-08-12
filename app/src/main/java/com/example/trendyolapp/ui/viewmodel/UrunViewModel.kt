@@ -18,6 +18,8 @@ class UrunViewModel : ViewModel() {
     private val _sepetOnaylandi = MutableLiveData<Boolean>()
     val sepetOnaylandi: LiveData<Boolean> get() = _sepetOnaylandi
 
+    var isFromSimdiAlFragment: Boolean = false
+
     fun urunEkle(urun: Urun): Boolean {
         return urunEkle(_favoriUrunler, urun)
     }

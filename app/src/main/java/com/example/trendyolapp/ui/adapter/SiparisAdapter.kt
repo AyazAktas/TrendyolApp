@@ -27,7 +27,10 @@ class SiparisAdapter(private val mContext: Context, private val siparisler: List
         s.textViewFiyat.text = "${siparis.totalPrice.toString()} TL"
         s.textViewSaat.text = siparis.time
         s.textViewTarih.text = siparis.date
-        val totalProductQuantity = siparis.products.sumOf { it.quantity }
+        var totalProductQuantity = siparis.products.sumOf { it.quantity }
+        if(totalProductQuantity==0){
+            totalProductQuantity=1
+        }
         s.textViewUrunAdet.text = "${totalProductQuantity} adet ürün sipariş edildi."
         s.textViewOrderCode.text = siparis.orderCode
 
